@@ -24,7 +24,7 @@
 ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
-(load "~/.emacs.d/bismigalis/window-managment.el")
+(load "~/.emacs.d/bismigalis/utilities.el")
 (load "~/.emacs.d/bismigalis/keybindings.el")
 ;;or
 ;; (defvar abedra/vendor-dir (expand-file-name "vendor" user-emacs-directory))
@@ -37,7 +37,7 @@
 
 (defvar bismigalis/packages '(;; ac-slime
 			      ;; auto-complete
-			      ;; autopair
+			      autopair
 			      ;; clojure-mode
 			      ;; clojure-test-mode
 			      ;; coffee-mode
