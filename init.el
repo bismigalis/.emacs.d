@@ -17,7 +17,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;;;; навигация между окнами при помощи M-`Arrow keys`
-(windmove-default-keybindings 'meta)
+(windmove-default-keybindings 'control)
 
 (put 'dired-find-alternate-file 'disabled nil)
 
