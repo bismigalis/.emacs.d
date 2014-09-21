@@ -23,7 +23,7 @@
 	  (select-window first-win)
 	  (if this-win-2nd (other-window 1))))))
 
-(define-key ctl-x-4-map "t" 'toggle-window-split)
+(global-set-key (kbd "C-4") 'toggle-window-split)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; duplicate current line
@@ -43,5 +43,5 @@
     	(insert current-line)
     	(decf n)))))
 
-(global-set-key (kbd "C-S-d") 'duplicate-current-line)
+(global-set-key (kbd "C-c d") 'duplicate-current-line)
 
