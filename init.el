@@ -1,5 +1,5 @@
 (require 'cl)
-
+(setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "chromium-browser")
 (toggle-uniquify-buffer-names)
 (setq stack-trace-on-error t)
 (setq make-backup-files nil)
