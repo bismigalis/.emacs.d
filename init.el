@@ -23,6 +23,8 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
+(require 'highlight-symbol)
+(setq highlight-symbol-mode t)
 
 (load "~/.emacs.d/bismigalis/utilities.el")
 (load "~/.emacs.d/bismigalis/keybindings.el")
@@ -38,6 +40,7 @@
 (defvar bismigalis/packages '(;; ac-slime
 			      ;; auto-complete
 			      autopair
+			      highlight-symbol
 			      ;; clojure-mode
 			      ;; clojure-test-mode
 			      ;; coffee-mode
@@ -149,7 +152,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (hc-zenburn)))
- '(custom-safe-themes (quote ("8fd393097ac6eabfcb172f656d781866beec05f27920a0691e8772aa2cdc7132" "25f330cb050c7e7ec402af1b60243e8185a7837b455af0fa026593d4f48a78b2" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
+ '(custom-safe-themes (quote ("8fd393097ac6eabfcb172f656d781866beec05f27920a0691e8772aa2cdc7132" "25f330cb050c7e7ec402af1b60243e8185a7837b455af0fa026593d4f48a78b2" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(js-enabled-frameworks (quote (javascript mochikit)))
+ '(js-indent-level 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
