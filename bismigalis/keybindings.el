@@ -9,8 +9,8 @@
 ;;;;SETTING
 
 ;; prev/next buffer
-(global-set-key [?\C-,] 'previous-buffer)
-(global-set-key [?\C-.] 'next-buffer)
+(global-set-key [?\C-,] 'iflipb-previous-buffer)
+(global-set-key [?\C-.] 'iflipb-next-buffer)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x z") 'zap-to-char)
@@ -31,3 +31,5 @@
 
 (global-set-key (kbd "C-<") 'beginning-of-buffer)
 (global-set-key (kbd "C->") 'end-of-buffer)
+
+
