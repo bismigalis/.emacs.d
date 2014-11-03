@@ -19,7 +19,6 @@
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-x x") 'execute-extended-command)
 (global-set-key (kbd "C-x m") 'magit-status)
-(global-set-key (kbd "M-z") 'repeat)
 
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-`") 'ibuffer)
@@ -32,4 +31,9 @@
 (global-set-key (kbd "C-<") 'beginning-of-buffer)
 (global-set-key (kbd "C->") 'end-of-buffer)
 
+(global-set-key (kbd "C-x C-d") 'dired)
 
+
+(global-set-key (kbd "M-z") 'repeat)
+(global-set-key (kbd "M-i") (lambda() (interactive) (find-file "~/.emacs.d/init.el")))
+;(global-set-key (kbd "M-p") 'repeat)
