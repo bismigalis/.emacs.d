@@ -3,7 +3,10 @@
 
 
 
-
+;;;; BOOKMARKS
+(global-set-key (kbd "C-6") 'bm-toggle)
+(global-set-key (kbd "C-5")   'bm-next)
+(global-set-key (kbd "C-%") 'bm-previous)
 
 
 ;;;;SETTING
@@ -17,7 +20,7 @@
 (global-set-key (kbd "C-x C-z") 'zap-to-char)
 (global-set-key (kbd "C-x b") 'previous-buffer)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
-(global-set-key (kbd "C-x x") 'execute-extended-command)
+;;(global-set-key (kbd "C-x x") 'execute-extended-command)
 (global-set-key (kbd "C-x m") 'magit-status)
 
 (global-set-key (kbd "C-z") 'undo)

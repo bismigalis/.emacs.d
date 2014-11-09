@@ -5,3 +5,4 @@ url/
 projectile-bookmarks.eld
 .smex-items
 session.*
+*-theme.el
