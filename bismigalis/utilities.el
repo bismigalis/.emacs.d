@@ -37,7 +37,7 @@
       ;; when on last line, insert a newline first
       (when (or (= 1 (forward-line 1)) (eq (point) (point-max)))
     	(insert "\n"))
-      
+
       ;; now insert as many time as requested
       (while (> n 0)
     	(insert current-line)
@@ -45,3 +45,28 @@
 
 (global-set-key (kbd "C-c d") 'duplicate-current-line)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; swap quotes of the string point is in
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun swap-quotes ()
+  "Swaps the quote symbols in a \\[python-mode] string"
+  (interactive)
+  (save-excursion
+    (let ((bos (save-excursion
+                 (beginning-of-string)))
+          (eos (save-excursion
+                 (beginning-of-string)
+                 (forward-sexp)
+                 (point)))
+          (replacement-char ?\'))
+      (goto-char bos)
+      ;; if the following character is a single quote then the
+      ;; `replacement-char' should be a double quote.
+      (when (eq (following-char) ?\')
+          (setq replacement-char ?\"))
+      (delete-char 1)
+      (insert replacement-char)
+      (goto-char eos)
+      (delete-char -1)
+      (insert replacement-char))))
