@@ -70,3 +70,15 @@
       (goto-char eos)
       (delete-char -1)
       (insert replacement-char))))
+
+;;; Occur Definitions
+(defun occur-python ()
+"Display an occur buffer of all definitions in the current buffer.
+Also, switch to that buffer."
+(interactive)
+(let ((list-matching-lines-face nil))
+(occur "^ *\\(def\\|class\\) "))
+(let ((window (get-buffer-window "*Occur*")))
+(if window
+(select-window window)
+(switch-to-buffer "*Occur*"))))

@@ -13,11 +13,6 @@
 
 
 ;;;;SETTING
-
-;; prev/next buffer
-(global-set-key [?\C-,] 'iflipb-previous-buffer)
-(global-set-key [?\C-.] 'iflipb-next-buffer)
-
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x b") 'previous-buffer)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
@@ -51,3 +46,18 @@
 ;; LOCAL KEYS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;(define-key python-mode-map (kbd "<f12>") 'python-shell-switch-to-shell)
+(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
+
+(global-set-key (kbd "<f1>") 'shell)
+
+(require 'cycle-resize)
+(global-set-key [C-pause] 'cycle-resize-window-vertically)
+(global-set-key [M-pause] 'cycle-resize-window-horizontally)
+
+
+;; prev/next buffer
+(global-set-key [?\C-,] 'swbuff-switch-to-next-buffer)
+(global-set-key [?\C-.] 'swbuff-switch-to-previous-buffer)
+(setq swbuff-exclude-buffer-regexps '("^ .*" "^\\*.*\\*"))
+(setq swbuff-exclude-mode-regexp "Dired")
+(setq swbuff-clear-delay 0)
