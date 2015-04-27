@@ -6,6 +6,9 @@
 (global-unset-key (kbd "C-/"))
 
 
+
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+;;(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 ;;;; BOOKMARKS
 (global-set-key (kbd "C-6") 'bm-toggle)
 (global-set-key (kbd "C-5")   'bm-next)
@@ -24,7 +27,10 @@
 ;(global-set-key (kbd "C-x C-z") 'zap-to-char)
 ;;(global-set-key (kbd "M-z") 'repeat)
 
-(global-set-key (kbd "C-`") 'ibuffer)
+;;(global-set-key (kbd "C-`") 'ibuffer)
+(global-set-key (kbd "C-`") 'helm-mini)
+(global-set-key (kbd "C-<escape>") 'helm-mini)
+
 
 (global-set-key (kbd "C-1") 'delete-other-windows)
 (global-set-key (kbd "C-2") 'split-window-below)
@@ -55,9 +61,9 @@
 (global-set-key [M-pause] 'cycle-resize-window-horizontally)
 
 
-;; prev/next buffer
-(global-set-key [?\C-,] 'swbuff-switch-to-next-buffer)
-(global-set-key [?\C-.] 'swbuff-switch-to-previous-buffer)
-(setq swbuff-exclude-buffer-regexps '("^ .*" "^\\*.*\\*"))
-(setq swbuff-exclude-mode-regexp "Dired")
-(setq swbuff-clear-delay 0)
+;;;; prev/next buffer
+;; (global-set-key [?\C-,] 'swbuff-switch-to-next-buffer)
+;; (global-set-key [?\C-.] 'swbuff-switch-to-previous-buffer)
+;; (setq swbuff-exclude-buffer-regexps '("^ .*" "^\\*.*\\*"))
+;; (setq swbuff-exclude-mode-regexp "Dired")
+;; (setq swbuff-clear-delay 0)
