@@ -54,7 +54,10 @@
 ;(define-key python-mode-map (kbd "<f12>") 'python-shell-switch-to-shell)
 (define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
 
-(global-set-key (kbd "<f1>") 'shell)
+
+
+(global-set-key (kbd "<f1>") (lambda() (interactive) (shell "*shell1*")))
+(global-set-key (kbd "<f2>") (lambda() (interactive) (shell "*shell2*")))
 
 (require 'cycle-resize)
 (global-set-key [C-pause] 'cycle-resize-window-vertically)
@@ -67,3 +70,26 @@
 ;; (setq swbuff-exclude-buffer-regexps '("^ .*" "^\\*.*\\*"))
 ;; (setq swbuff-exclude-mode-regexp "Dired")
 ;; (setq swbuff-clear-delay 0)
+(global-set-key (kbd "C-=") 'mc/mark-next-like-this)
+
+
+;; misc-cmds.el
+;;   The first two of these are needed to remove the default remappings.
+(require 'misc-cmds)
+(define-key visual-line-mode-map [remap move-beginning-of-line] nil)
+(define-key visual-line-mode-map [remap move-end-of-line] nil)
+(define-key visual-line-mode-map [home] 'beginning-of-line+)
+(define-key visual-line-mode-map [end]  'end-of-line+)
+(define-key visual-line-mode-map "\C-a" 'beginning-of-visual-line+)
+(define-key visual-line-mode-map "\C-e" 'end-of-visual-line+)
+
+(global-set-key [remap previous-buffer] 'previous-buffer-repeat)
+(global-set-key [remap next-buffer]     'next-buffer-repeat)
+(global-set-key [remap undo]            'undo-repeat)
+
+;; CORRAL
+(global-set-key (kbd "M-9") 'corral-parentheses-backward)
+(global-set-key (kbd "M-0") 'corral-parentheses-forward)
+(global-set-key (kbd "M-[") 'corral-brackets-backward)
+(global-set-key (kbd "M-]") 'corral-brackets-forward)
+(global-set-key (kbd "C-\"") 'corral-double-quotes-backward)

@@ -4,36 +4,20 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector [default default default italic underline success warning error])
- '(ansi-color-names-vector ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(column-number-mode t)
- '(compilation-message-face (quote default))
- '(cua-global-mark-cursor-color "#2aa198")
- '(cua-normal-cursor-color "#657b83")
- '(cua-overwrite-cursor-color "#b58900")
- '(cua-read-only-cursor-color "#859900")
- '(custom-enabled-themes (quote (tsdh-dark)))
+ '(custom-enabled-themes (quote (tango-dark)))
+ '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" "8fd393097ac6eabfcb172f656d781866beec05f27920a0691e8772aa2cdc7132" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "39dd7106e6387e0c45dfce8ed44351078f6acd29a345d8b22e7b8e54ac25bac4" "cab317d0125d7aab145bc7ee03a1e16804d5abdfa2aa8738198ac30dc5f7b569" default)))
  '(dired-dwim-target t)
- '(fci-rule-color "#383838")
- '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
- '(highlight-symbol-foreground-color "#586e75")
- '(highlight-tail-colors (quote (("#eee8d5" . 0) ("#B4C342" . 20) ("#69CABF" . 30) ("#69B7F0" . 50) ("#DEB542" . 60) ("#F2804F" . 70) ("#F771AC" . 85) ("#eee8d5" . 100))))
  '(js-enabled-frameworks (quote (javascript mochikit)))
  '(js-indent-level 2)
  '(jsx-indent-level 2)
- '(magit-diff-use-overlays nil)
  '(magit-use-overlays nil)
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(show-paren-mode t)
- '(term-default-bg-color "#fdf6e3")
- '(term-default-fg-color "#657b83")
  '(tool-bar-mode nil)
- '(vc-annotate-background "#2B2B2B")
- '(vc-annotate-color-map (quote ((20 . "#BC8383") (40 . "#CC9393") (60 . "#DFAF8F") (80 . "#D0BF8F") (100 . "#E0CF9F") (120 . "#F0DFAF") (140 . "#5F7F5F") (160 . "#7F9F7F") (180 . "#8FB28F") (200 . "#9FC59F") (220 . "#AFD8AF") (240 . "#BFEBBF") (260 . "#93E0E3") (280 . "#6CA0A3") (300 . "#7CB8BB") (320 . "#8CD0D3") (340 . "#94BFF3") (360 . "#DC8CC3"))))
- '(vc-annotate-very-old-color "#DC8CC3")
  '(web-mode-code-indent-offset 2)
  '(web-mode-enable-auto-pairing nil)
- '(web-mode-enable-auto-quoting nil)
- '(weechat-color-list (quote (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496"))))
+ '(web-mode-enable-auto-quoting nil))
 ;;END
 
 ;;;; package system setup
@@ -255,6 +239,8 @@
 (add-hook 'js-mode-hook (lambda () (flycheck-mode t)))
 (add-hook 'python-mode-hook (lambda () (flycheck-mode t)))
 
+(winner-mode 1)
+(add-hook 'after-init-hook 'global-company-mode)
 ;;;;HOOKS
 (add-hook 'nxml-mode-hook
           (lambda ()
@@ -273,3 +259,4 @@
  ;; If there is more than one, they won't work right.
  )
 (put 'dired-find-alternate-file 'disabled nil)
+(put 'narrow-to-region 'disabled nil)

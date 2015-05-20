@@ -4,7 +4,7 @@
   (define-key shell-mode-map (kbd "<C-up>") 'windmove-up)
   (define-key shell-mode-map (kbd "<C-down>") 'windmove-down)
   (define-key shell-mode-map (kbd "C-c g") 'goto-python-trace-file-num)
-  (define-key shell-mode-map (kbd "<f1>") 'goto-python-trace-file-num)
+  (define-key shell-mode-map (kbd "C-x t") 'goto-python-trace-file-num)
 )
 
 
