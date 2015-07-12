@@ -71,30 +71,60 @@
       (delete-char -1)
       (insert replacement-char))))
 
-;;; Occur Definitions
-(defun occur-python ()
-  "Display an occur buffer of all definitions in the current buffer.
-Also, switch to that buffer."
-  (interactive)
-  (let ((list-matching-lines-face nil))
-    (occur "^ *\\(def\\|class\\) "))
-  (let ((window (get-buffer-window "*Occur*")))
-    (if window
-	(select-window window)
-      (switch-to-buffer "*Occur*"))))
 
-(defun goto-python-trace-file-num ()
-  "When invoked, parses line under cursor to get file and line, then go to it"
+
+;;;;;;;;;;;;;;;;;;;;;;;
+;; NEXT/PREVIOUS BUFFER
+;;;;;;;;;;;;;;;;;;;;;;;
+(defvar bismi-switch-buffer-ignore-dired t
+  "If t, ignore dired buffer when calling `bismi-next-user-buffer' or `bismi-previous-user-buffer'")
+(setq bismi-switch-buffer-ignore-dired t)
+
+(defun bismi-next-user-buffer ()
+  "Switch to the next user buffer.
+ “user buffer” is a buffer whose name does not start with “*”.
+If `bismi-switch-buffer-ignore-dired' is true, also skip directory buffer.
+2015-01-05 URL `http://ergoemacs.org/emacs/elisp_next_prev_user_buffer.html'"
   (interactive)
-					;(buffer-substring-no-properties (line-beginning-position) (line-end-position))
-  (save-match-data
-    (let* ((line (thing-at-point 'line))
-	   (_ (string-match "\"\\([^\"]+\\)\", line \\([[:digit:]]+\\)" line))
-	   (filename (match-string 1 line))
-	   (linenum (match-string 2 line)))
-      (progn
-	(find-file filename)
-	(beginning-of-buffer)
-	(forward-line (1- (string-to-number linenum)))
-	;;(message "%s %s" filename linenum)
-      ))))
+  (next-buffer)
+  (let ((i 0))
+    (while (< i 20)
+      (if (or
+           (string-equal "*" (substring (buffer-name) 0 1))
+           (if (string-equal major-mode "dired-mode")
+               bismi-switch-buffer-ignore-dired
+             nil
+             ))
+          (progn (next-buffer)
+                 (setq i (1+ i)))
+        (progn (setq i 100))))))
+
+(defun bismi-previous-user-buffer ()
+  "Switch to the previous user buffer.
+ “user buffer” is a buffer whose name does not start with “*”.
+If `bismi-switch-buffer-ignore-dired' is true, also skip directory buffer.
+2015-01-05 URL `http://ergoemacs.org/emacs/elisp_next_prev_user_buffer.html'"
+  (interactive)
+  (previous-buffer)
+  (let ((i 0))
+    (while (< i 20)
+      (if (or
+           (string-equal "*" (substring (buffer-name) 0 1))
+           (if (string-equal major-mode "dired-mode")
+               bismi-switch-buffer-ignore-dired
+             nil
+             ))
+          (progn (previous-buffer)
+                 (setq i (1+ i)))
+        (progn (setq i 100))))))
+
+
+(defun bismi-convert-to-hiccup (start end)
+  "Convert html markup into hiccup"
+  (interactive "r")
+  (save-excursion
+    (replace-regexp "</\[^>\]+>" "]" nil start end)
+    (replace-string "class=" "{:class " nil start end)
+    (replace-string "<" "[:" nil start end)
+    (replace-string ">" "]" nil start end)
+    ))

@@ -20,17 +20,26 @@
  '(web-mode-enable-auto-quoting nil))
 ;;END
 
-;;;; package system setup
+
+;; package system setup
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+
+(global-page-break-lines-mode)
+;; keys for moving to prev/next code section (Form Feed; ^L)
+(global-set-key (kbd "<C-M-prior>") 'backward-page) ; Ctrl+Alt+PageUp
+(global-set-key (kbd "<C-M-next>") 'forward-page)   ; Ctrl+Alt+PageDown
 
 (define-coding-system-alias 'UTF-8 'utf-8)
 (setq vc-handled-backends (quote ()))
 (setq tramp-default-method "ssh")
-
+(setq venv-location "/home/user/.env") ;;;VIRTUALENVWRAPPER
+(desktop-save-mode 1)
 
 ;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 ;; (autoload 'jsx-mode "jsx-mode" "JSX mode" t)
@@ -64,8 +73,6 @@
 (setq auto-save-file-name-transforms
           `((".*" ,temporary-file-directory t)))
 
-;;(setq gud-pdb-command-name "python -m pdb")
-;;(add-hook 'comint-output-filter-functions 'python-pdbtrack-comint-output-filter-function)
 
 (require 'cl)
 (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "chromium-browser")
@@ -91,6 +98,7 @@
 (require 'highlight-symbol)
 ;;(setq highlight-symbol-mode t)
 (global-set-key (kbd "C-c h") 'highlight-symbol-at-point)
+(global-set-key (kbd "C-c H") 'highlight-symbol-remove-all)
 (global-set-key (kbd "M-<down>") 'highlight-symbol-next)
 (global-set-key (kbd "M-<up>") 'highlight-symbol-prev)
 ;; (global-set-key [(meta f3)] 'highlight-symbol-query-replace)
@@ -110,40 +118,28 @@
 (load-directory "~/.emacs.d/bismigalis")
 
 
-(defvar bismigalis/packages '(;; ac-slime
-			      ;; auto-complete
-			      autopair
-			      highlight-symbol
-			      ;; clojure-mode
-			      ;; clojure-test-mode
-			      ;; coffee-mode
-			      ;; csharp-mode
-			      ;; deft
-			      ;; erlang
-			      ;; feature-mode
-			      flycheck
-			      ;; gist
-			      ;; graphviz-dot-mode
-			      ;; haml-mode
-			      ;; htmlize
-			      magit
-			      ;; markdown-mode
-			      ;; marmalade
-			      nodejs-repl
-			      ;; nrepl
-			      ;; o-blog
-			      ;; org
-			      paredit
-			      ;; php-mode
-			      ;; puppet-mode
-			      restclient
-			      smex
-			      bm
-			      web-mode
-			      ;; writegood-mode
-			      yaml-mode
-			      )
-  "Default packages")
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; Auto instal packages
+;;;;;;;;;;;;;;;;;;;;;;;;;
+(defvar bismigalis/packages '(zygospore
+                              autopair
+                              highlight-symbol
+                              flycheck
+                              helm
+                              magit
+                              paredit
+                              restclient
+                              smex
+                              bm
+                              web-mode
+                              python-mode
+                              yasnippet
+                              yaml-mode
+                              page-break-lines
+                              ) "Default packages")
 
 ;;;;Install default packages
 (defun bismigalis/packages-installed-p ()
@@ -157,7 +153,14 @@
   (dolist (pkg bismigalis/packages)
     (when (not (package-installed-p pkg))
       (package-install pkg))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+
+
+
+(add-hook 'ibuffer-mode-hook (lambda () (ibuffer-auto-mode 1)))
+;;(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 
 ;;;; hide hidden files
@@ -184,6 +187,7 @@
       visible-bell nil)
 (show-paren-mode t)
 
+
 ;;;;SMEX
 (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
 (smex-initialize)
@@ -234,14 +238,16 @@
 
 
 
-;;;;FLYCHECK
-(require 'flycheck)
-(add-hook 'js-mode-hook (lambda () (flycheck-mode t)))
-(add-hook 'python-mode-hook (lambda () (flycheck-mode t)))
+
+
 
 (winner-mode 1)
 (add-hook 'after-init-hook 'global-company-mode)
+
+
 ;;;;HOOKS
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+
 (add-hook 'nxml-mode-hook
           (lambda ()
             (setq tab-width 4)

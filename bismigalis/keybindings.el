@@ -51,13 +51,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LOCAL KEYS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(define-key python-mode-map (kbd "<f12>") 'python-shell-switch-to-shell)
 (define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
 
 
 
 (global-set-key (kbd "<f1>") (lambda() (interactive) (shell "*shell1*")))
 (global-set-key (kbd "<f2>") (lambda() (interactive) (shell "*shell2*")))
+(global-set-key (kbd "<f3>") (lambda() (interactive) (shell "*shell3*")))
+(global-set-key (kbd "<f4>") (lambda() (interactive) (shell "*shell4*")))
 
 (require 'cycle-resize)
 (global-set-key [C-pause] 'cycle-resize-window-vertically)
@@ -65,11 +66,13 @@
 
 
 ;;;; prev/next buffer
-;; (global-set-key [?\C-,] 'swbuff-switch-to-next-buffer)
-;; (global-set-key [?\C-.] 'swbuff-switch-to-previous-buffer)
+(global-set-key [?\C-,] 'bismi-next-user-buffer)
+(global-set-key [?\C-.] 'bismi-previous-user-buffer)
 ;; (setq swbuff-exclude-buffer-regexps '("^ .*" "^\\*.*\\*"))
 ;; (setq swbuff-exclude-mode-regexp "Dired")
 ;; (setq swbuff-clear-delay 0)
+
+;; MULTIPLE-CURSORS
 (global-set-key (kbd "C-=") 'mc/mark-next-like-this)
 
 
@@ -93,3 +96,7 @@
 (global-set-key (kbd "M-[") 'corral-brackets-backward)
 (global-set-key (kbd "M-]") 'corral-brackets-forward)
 (global-set-key (kbd "C-\"") 'corral-double-quotes-backward)
+
+(global-set-key (kbd "C-a") 'beginning-or-indentation)
+
+(global-set-key [remap delete-other-windows] 'zygospore-toggle-delete-other-windows)

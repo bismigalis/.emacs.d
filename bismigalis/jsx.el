@@ -1,13 +1,3 @@
-(defun bismi-shell-mode-keys ()
-  "my keys for `shell-mode'."
-  (interactive)
-  (define-key shell-mode-map (kbd "<C-up>") 'windmove-up)
-  (define-key shell-mode-map (kbd "<C-down>") 'windmove-down)
-  (define-key shell-mode-map (kbd "C-c g") 'goto-python-trace-file-num)
-  (define-key shell-mode-map (kbd "C-x t") 'goto-python-trace-file-num)
-)
-
-
 (defun bismi-jsx-compile-file (&optional options dst async)
   "Compile the JSX script of the current buffer
 and make a JS script in the same directory."
@@ -36,7 +26,6 @@ and make a JS script in the same directory."
       (bismi-jsx-compile-file))
   )
 
-(add-hook 'shell-mode-hook 'bismi-shell-mode-keys)
+
+
 (add-hook 'after-save-hook 'bismi-jsx-compile)
-(add-hook 'ibuffer-mode-hook (lambda () (ibuffer-auto-mode 1)))
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
