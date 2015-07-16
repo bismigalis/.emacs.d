@@ -46,7 +46,7 @@
 
 
 (global-set-key (kbd "M-i") (lambda() (interactive) (find-file "~/.emacs.d/init.el")))
-;(global-set-key (kbd "M-p") 'repeat)
+(global-set-key (kbd "M-p") 'list-packages)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LOCAL KEYS

@@ -3,10 +3,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector [default default default italic underline success warning error])
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(column-number-mode t)
- '(custom-enabled-themes (quote (tango-dark)))
- '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" "8fd393097ac6eabfcb172f656d781866beec05f27920a0691e8772aa2cdc7132" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "39dd7106e6387e0c45dfce8ed44351078f6acd29a345d8b22e7b8e54ac25bac4" "cab317d0125d7aab145bc7ee03a1e16804d5abdfa2aa8738198ac30dc5f7b569" default)))
+ '(custom-enabled-themes (quote (cyberpunk)))
+ '(custom-safe-themes
+   (quote
+    ("7abf5a28ec511e7e8f5fe10978b3d63058bbd280ed2b8d513f9dd8b7f5fc9400" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" "8fd393097ac6eabfcb172f656d781866beec05f27920a0691e8772aa2cdc7132" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "39dd7106e6387e0c45dfce8ed44351078f6acd29a345d8b22e7b8e54ac25bac4" "cab317d0125d7aab145bc7ee03a1e16804d5abdfa2aa8738198ac30dc5f7b569" default)))
  '(dired-dwim-target t)
  '(js-enabled-frameworks (quote (javascript mochikit)))
  '(js-indent-level 2)
@@ -25,12 +28,13 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-;; (add-to-list 'package-archives
-;;              '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
 
-(global-page-break-lines-mode)
+(setq explicit-shell-file-name "/bin/bash")
+;;(global-page-break-lines-mode)
 ;; keys for moving to prev/next code section (Form Feed; ^L)
 (global-set-key (kbd "<C-M-prior>") 'backward-page) ; Ctrl+Alt+PageUp
 (global-set-key (kbd "<C-M-next>") 'forward-page)   ; Ctrl+Alt+PageDown
@@ -43,6 +47,11 @@
 
 ;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 ;; (autoload 'jsx-mode "jsx-mode" "JSX mode" t)
+
+;; (require 'js2-refactor)
+;;     (add-hook 'js2-mode-hook #'js2-refactor-mode)
+;;     (js2r-add-keybindings-with-prefix "C-c C-m")
+
 
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 (defadvice web-mode-highlight-part (around tweak-jsx activate)
@@ -84,7 +93,7 @@
       initial-major-mode 'org-mode)
 ;;(scroll-bar-mode -1)
 (tool-bar-mode -1)
-;;(menu-bar-mode -1)
+(menu-bar-mode -1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (windmove-default-keybindings 'control)
 (setq make-backup-files nil)
@@ -139,6 +148,8 @@
                               yasnippet
                               yaml-mode
                               page-break-lines
+			      cycle-resize
+			      misc-cmds
                               ) "Default packages")
 
 ;;;;Install default packages
