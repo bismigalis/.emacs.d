@@ -100,3 +100,7 @@
 (global-set-key (kbd "C-a") 'beginning-or-indentation)
 
 (global-set-key [remap delete-other-windows] 'zygospore-toggle-delete-other-windows)
+
+;; keys for moving to prev/next code section (Form Feed; ^L)
+(global-set-key (kbd "<C-M-prior>") 'backward-page) ; Ctrl+Alt+PageUp
+(global-set-key (kbd "<C-M-next>") 'forward-page)   ; Ctrl+Alt+PageDown
