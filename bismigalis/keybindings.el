@@ -4,6 +4,7 @@
 (global-unset-key (kbd "C-x a"))
 (global-unset-key (kbd "C-<next>"))
 (global-unset-key (kbd "C-/"))
+(global-unset-key (kbd "<insert>"))
 
 
 
@@ -18,9 +19,10 @@
 ;;;;SETTING
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x b") 'previous-buffer)
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
+;;(global-set-key (kbd "C-x k") 'kill-this-buffer)
+(global-set-key (kbd "C-x k") 'kill-buffer-and-window)
 ;;(global-set-key (kbd "C-x x") 'execute-extended-command)
-(global-set-key (kbd "C-x m") 'magit-status)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 
 ;(global-set-key (kbd "C-x z") 'zap-to-char)
@@ -75,29 +77,15 @@
 ;; MULTIPLE-CURSORS
 (global-set-key (kbd "C-=") 'mc/mark-next-like-this)
 
-
-;; misc-cmds.el
-;;   The first two of these are needed to remove the default remappings.
-(require 'misc-cmds)
-(define-key visual-line-mode-map [remap move-beginning-of-line] nil)
-(define-key visual-line-mode-map [remap move-end-of-line] nil)
-(define-key visual-line-mode-map [home] 'beginning-of-line+)
-(define-key visual-line-mode-map [end]  'end-of-line+)
-(define-key visual-line-mode-map "\C-a" 'beginning-of-visual-line+)
-(define-key visual-line-mode-map "\C-e" 'end-of-visual-line+)
-
-(global-set-key [remap previous-buffer] 'previous-buffer-repeat)
-(global-set-key [remap next-buffer]     'next-buffer-repeat)
-(global-set-key [remap undo]            'undo-repeat)
-
 ;; CORRAL
-(global-set-key (kbd "M-9") 'corral-parentheses-backward)
-(global-set-key (kbd "M-0") 'corral-parentheses-forward)
-(global-set-key (kbd "M-[") 'corral-brackets-backward)
-(global-set-key (kbd "M-]") 'corral-brackets-forward)
-(global-set-key (kbd "C-\"") 'corral-double-quotes-backward)
+;; (global-set-key (kbd "M-9") 'corral-parentheses-backward)
+;; (global-set-key (kbd "M-0") 'corral-parentheses-forward)
+;; (global-set-key (kbd "M-[") 'corral-brackets-backward)
+;; (global-set-key (kbd "M-]") 'corral-brackets-forward)
+;; (global-set-key (kbd "C-\"") 'corral-double-quotes-backward)
 
-(global-set-key (kbd "C-a") 'beginning-or-indentation)
+;;(global-set-key (kbd "C-a") 'beginning-or-indentation)
+(global-set-key (kbd "C-a") 'smarter-move-beginning-of-line)
 
 (global-set-key [remap delete-other-windows] 'zygospore-toggle-delete-other-windows)
 
