@@ -1,3 +1,9 @@
+;;show buffer filename in the title
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b"))))
+
 (when (fboundp 'winner-mode)
       (winner-mode 1))
 (add-hook 'ibuffer-mode-hook (lambda () (ibuffer-auto-mode 1)))

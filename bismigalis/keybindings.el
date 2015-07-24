@@ -19,8 +19,8 @@
 ;;;;SETTING
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x b") 'previous-buffer)
-;;(global-set-key (kbd "C-x k") 'kill-this-buffer)
-(global-set-key (kbd "C-x k") 'kill-buffer-and-window)
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
+;;(global-set-key (kbd "C-x k") 'kill-buffer-and-window)
 ;;(global-set-key (kbd "C-x x") 'execute-extended-command)
 (global-set-key (kbd "C-x g") 'magit-status)
 
