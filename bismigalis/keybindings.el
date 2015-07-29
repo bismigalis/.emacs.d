@@ -57,7 +57,7 @@
 
 
 
-(global-set-key (kbd "<f1>") (lambda() (interactive) (shell "*shell1*")))
+(global-set-key (kbd "<f1>") (lambda() (interactive) (term "/bin/bash")))
 (global-set-key (kbd "<f2>") (lambda() (interactive) (shell "*shell2*")))
 (global-set-key (kbd "<f3>") (lambda() (interactive) (shell "*shell3*")))
 (global-set-key (kbd "<f4>") (lambda() (interactive) (shell "*shell4*")))
