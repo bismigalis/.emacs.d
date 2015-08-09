@@ -1,3 +1,29 @@
+(setq echo-keystrokes 0.1
+      use-dialog-box nil
+      visible-bell nil)
+
+;;;; indentation
+(setq-default tab-width 4
+      indent-tabs-mode nil)
+(setq tab-stop-list (number-sequence 4 200 4))
+
+;;;;SMEX
+(setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+
+;;;; temprorary files
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
+;;;;YASNIPPET
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+(yas-global-mode 1)
+
+(winner-mode 1)
+(add-hook 'after-init-hook 'global-company-mode)
 ;;show buffer filename in the title
 (setq frame-title-format
       '((:eval (if (buffer-file-name)
@@ -23,23 +49,12 @@
 (setq venv-location "/home/user/.env") ;;;VIRTUALENVWRAPPER
 (desktop-save-mode 1)
 
-;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
-;; (autoload 'jsx-mode "jsx-mode" "JSX mode" t)
-
 (require 'js2-refactor)
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
 (js2r-add-keybindings-with-prefix "M-r")
 
 
-(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
-(defadvice web-mode-highlight-part (around tweak-jsx activate)
-  (if (equal web-mode-content-type "jsx")
-      (let ((web-mode-enable-part-face nil))
-        ad-do-it)
-    ad-do-it))
 
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.pt\\'" . web-mode))
 
 (setq browse-url-browser-function 'w3m-goto-url-new-session)
 (setq w3m-user-agent "Mozilla/5.0 (Linux; U; Android 2.3.3; zh-tw; HTC_Pyramid Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.")
@@ -84,6 +99,7 @@
 
 (require 'highlight-symbol)
 ;;(setq highlight-symbol-mode t)
+;;(highlight-symbol-mode)
 (global-set-key (kbd "C-c h") 'highlight-symbol-at-point)
 (global-set-key (kbd "C-c H") 'highlight-symbol-remove-all)
 (global-set-key (kbd "M-<down>") 'highlight-symbol-next)
