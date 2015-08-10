@@ -1,3 +1,5 @@
+(setq compilation-scroll-output t)
+
 ;;show buffer filename in the title
 (setq frame-title-format
       '((:eval (if (buffer-file-name)

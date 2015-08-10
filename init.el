@@ -30,6 +30,8 @@
    (quote
     ("7abf5a28ec511e7e8f5fe10978b3d63058bbd280ed2b8d513f9dd8b7f5fc9400" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "39dd7106e6387e0c45dfce8ed44351078f6acd29a345d8b22e7b8e54ac25bac4" "8fd393097ac6eabfcb172f656d781866beec05f27920a0691e8772aa2cdc7132" "f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default)))
  '(fci-rule-color "#2D2D2D")
+ '(js2-basic-offset 2)
+ '(js2-bounce-indent-p nil)
  '(json-reformat:indent-width 2)
  '(vc-annotate-background "#202020")
  '(vc-annotate-color-map
