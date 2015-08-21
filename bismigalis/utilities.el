@@ -210,3 +210,15 @@ If `bismi-switch-buffer-ignore-dired' is true, also skip directory buffer.
     (recompile))))
 
  (global-set-key (kbd "S-<f10>") 'compile-dwim)
+
+
+(defun copy-file-name-to-clipboard ()
+  "Copy the current buffer file name to the clipboard."
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (when filename
+      (kill-new filename)
+      (message "Copied buffer file name '%s' to the clipboard." filename))))
+(global-set-key (kbd "S-<f2>") 'copy-file-name-to-clipboard)

@@ -55,13 +55,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
 
-
-
-(global-set-key (kbd "<f1>") (lambda() (interactive) (term "/bin/bash")))
-(global-set-key (kbd "<f2>") (lambda() (interactive) (shell "*shell2*")))
-(global-set-key (kbd "<f3>") (lambda() (interactive) (shell "*shell3*")))
-(global-set-key (kbd "<f4>") (lambda() (interactive) (shell "*shell4*")))
-
 (require 'cycle-resize)
 (global-set-key [C-pause] 'cycle-resize-window-vertically)
 (global-set-key [M-pause] 'cycle-resize-window-horizontally)
@@ -97,3 +90,4 @@
 (define-key global-map [(control o)] 'loccur-current)
 (define-key global-map [(control meta o)] 'loccur)
 (define-key global-map [(control shift o)] 'loccur-previous-match)
+(global-set-key [f8] 'neotree-toggle)

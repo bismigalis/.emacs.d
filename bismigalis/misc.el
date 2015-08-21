@@ -22,7 +22,7 @@
 
 ;;;;YASNIPPET
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-(yas-global-mode 1)
+(yas-global-mode -1)
 
 (winner-mode 1)
 (add-hook 'after-init-hook 'global-company-mode)
