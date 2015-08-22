@@ -21,8 +21,12 @@
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 ;;;;YASNIPPET
+(require 'yasnippet)
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 (yas-global-mode -1)
+(yas-reload-all)
+(add-hook 'prog-mode-hook 'yas-minor-mode)
+
 
 (winner-mode 1)
 (add-hook 'after-init-hook 'global-company-mode)
