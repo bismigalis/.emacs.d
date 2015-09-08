@@ -1,5 +1,6 @@
 ;;;; UNSETTING
 ;;(global-unset-key (kbd "M-x"))
+;(global-unset-key (kbd "C-w"))
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-x a"))
 (global-unset-key (kbd "C-<next>"))
@@ -47,8 +48,8 @@
 
 
 
-(global-set-key (kbd "M-i") (lambda() (interactive) (find-file "~/.emacs.d/init.el")))
-(global-set-key (kbd "M-p") 'list-packages)
+(global-set-key (kbd "C-x I") (lambda() (interactive) (find-file "~/.emacs.d/bismigalis")))
+(global-set-key (kbd "C-x P") 'list-packages)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LOCAL KEYS
@@ -87,7 +88,7 @@
 (global-set-key (kbd "<C-M-next>") 'forward-page)   ; Ctrl+Alt+PageDown
 
 (require 'loccur)
-(define-key global-map [(control o)] 'loccur-current)
+(define-key global-map [(meta o)] 'loccur-current)
 (define-key global-map [(control meta o)] 'loccur)
 (define-key global-map [(control shift o)] 'loccur-previous-match)
 (global-set-key [f8] 'neotree-toggle)
