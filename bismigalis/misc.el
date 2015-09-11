@@ -113,3 +113,7 @@
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 (setq browse-url-browser-function 'eww-browse-url)
+
+(when (require 'browse-kill-ring nil 'noerror)
+  (browse-kill-ring-default-keybindings))
+(setq browse-kill-ring-quit-action 'save-and-restore)

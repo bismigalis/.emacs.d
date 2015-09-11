@@ -1,7 +1,7 @@
 
 (require 'flycheck)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . fundamental-mode))
 (add-to-list 'auto-mode-alist '("\\.soy\\'" . closure-template-html-mode))
 
 (add-hook 'js2-mode-hook

@@ -30,8 +30,6 @@
 ;(global-set-key (kbd "C-x C-z") 'zap-to-char)
 ;;(global-set-key (kbd "M-z") 'repeat)
 
-;;(global-set-key (kbd "C-`") 'ibuffer)
-(global-set-key (kbd "C-`") 'helm-mini)
 (global-set-key (kbd "C-<escape>") 'helm-mini)
 
 
