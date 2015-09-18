@@ -33,6 +33,7 @@
  '(js2-basic-offset 2)
  '(js2-bounce-indent-p nil)
  '(json-reformat:indent-width 2)
+ '(neo-window-width 60)
  '(vc-annotate-background "#202020")
  '(vc-annotate-color-map
    (quote

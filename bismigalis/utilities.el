@@ -209,7 +209,7 @@ If `bismi-switch-buffer-ignore-dired' is true, also skip directory buffer.
    (t
     (recompile))))
 
- (global-set-key (kbd "S-<f10>") 'compile-dwim)
+
 
 
 (defun copy-file-name-to-clipboard ()
@@ -222,3 +222,17 @@ If `bismi-switch-buffer-ignore-dired' is true, also skip directory buffer.
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
 (global-set-key (kbd "S-<f2>") 'copy-file-name-to-clipboard)
+
+(defun url-encode-region (start end)
+  "Replace a region with the same contents, only URL decoded."
+  (interactive "r")
+  (let ((text (url-hexify-string (buffer-substring start end))))
+    (delete-region start end)
+    (insert text)))
+
+(defun url-decode-region (start end)
+  "Replace a region with the same contents, only URL decoded."
+  (interactive "r")
+  (let ((text (url-unhex-string (buffer-substring start end))))
+    (delete-region start end)
+    (insert text)))

@@ -43,6 +43,7 @@
 
 (global-set-key (kbd "C-x C-d") 'dired)
 (global-set-key (kbd "C-x C-u") 'undo)
+(global-set-key (kbd "C-x S") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 
 
 
@@ -90,3 +91,5 @@
 (define-key global-map [(control meta o)] 'loccur)
 (define-key global-map [(control shift o)] 'loccur-previous-match)
 (global-set-key [f8] 'neotree-toggle)
+
+(global-set-key (kbd "S-<f10>") 'recompile)
