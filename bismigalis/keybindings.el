@@ -9,6 +9,7 @@
 
 
 
+(global-set-key (kbd "C-`") ctl-x-r-map)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 ;;(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 ;;;; BOOKMARKS
@@ -43,12 +44,11 @@
 
 (global-set-key (kbd "C-x C-d") 'dired)
 (global-set-key (kbd "C-x C-u") 'undo)
+
 (global-set-key (kbd "C-x S") (lambda () (interactive) (switch-to-buffer "*scratch*")))
-
-
-
 (global-set-key (kbd "C-x I") (lambda() (interactive) (find-file "~/.emacs.d/bismigalis")))
 (global-set-key (kbd "C-x P") 'list-packages)
+(global-set-key (kbd "C-x T") 'todotxt)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LOCAL KEYS
@@ -70,12 +70,6 @@
 ;; MULTIPLE-CURSORS
 (global-set-key (kbd "C-=") 'mc/mark-next-like-this)
 
-;; CORRAL
-;; (global-set-key (kbd "M-9") 'corral-parentheses-backward)
-;; (global-set-key (kbd "M-0") 'corral-parentheses-forward)
-;; (global-set-key (kbd "M-[") 'corral-brackets-backward)
-;; (global-set-key (kbd "M-]") 'corral-brackets-forward)
-;; (global-set-key (kbd "C-\"") 'corral-double-quotes-backward)
 
 ;;(global-set-key (kbd "C-a") 'beginning-or-indentation)
 (global-set-key (kbd "C-a") 'smarter-move-beginning-of-line)
@@ -93,3 +87,20 @@
 (global-set-key [f8] 'neotree-toggle)
 
 (global-set-key (kbd "S-<f10>") 'recompile)
+
+
+
+(global-set-key (kbd "C-x C-k") '(lambda () (interactive)
+                                   (kill-buffer)
+                                   (delete-window)))
+
+(global-set-key (kbd "<C-next>") 'winner-redo)
+(global-set-key (kbd "<C-prior>") 'winner-undo)
+
+;; META
+
+(global-set-key (kbd "M-X") 'helm-M-x)
+(global-set-key (kbd "M-x") 'smex)
+
+(global-set-key (kbd "M-f") 'find-name-dired)
+(global-set-key (kbd "M-r") 'rgrep)

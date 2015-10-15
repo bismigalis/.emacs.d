@@ -1,3 +1,10 @@
+(require 'todotxt)
+
+(global-auto-revert-mode 1)
+(setq auto-revert-check-vc-info t)
+
+(setq dired-listing-switches "--group-directories-first -lLh")
+
 (setq compilation-scroll-output t)
 
 (setq echo-keystrokes 0.1
@@ -12,8 +19,6 @@
 ;;;;SMEX
 (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
 (smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 
 ;;;; temprorary files
@@ -121,3 +126,9 @@
 (when (require 'browse-kill-ring nil 'noerror)
   (browse-kill-ring-default-keybindings))
 (setq browse-kill-ring-quit-action 'save-and-restore)
+
+(add-to-list 'display-buffer-alist
+                    `(,(rx bos "*helm" (* not-newline) "*" eos)
+                         (display-buffer-in-side-window)
+                         (inhibit-same-window . t)
+                         (window-height . 0.4)))
