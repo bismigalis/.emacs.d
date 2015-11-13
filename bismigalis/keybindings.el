@@ -50,10 +50,7 @@
 (global-set-key (kbd "C-x P") 'list-packages)
 (global-set-key (kbd "C-x T") 'todotxt)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; LOCAL KEYS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
+
 
 (require 'cycle-resize)
 (global-set-key [C-pause] 'cycle-resize-window-vertically)
@@ -61,8 +58,12 @@
 
 
 ;;;; prev/next buffer
-(global-set-key [?\C-,] 'bismi-next-user-buffer)
-(global-set-key [?\C-.] 'bismi-previous-user-buffer)
+(global-set-key [?\C-,] 'winner-undo)
+(global-set-key [?\C-.] 'winner-redo)
+;; (global-set-key (kbd "<C-next>") 'winner-redo)
+;; (global-set-key (kbd "<C-prior>") 'winner-undo)
+
+
 ;; (setq swbuff-exclude-buffer-regexps '("^ .*" "^\\*.*\\*"))
 ;; (setq swbuff-exclude-mode-regexp "Dired")
 ;; (setq swbuff-clear-delay 0)
@@ -94,8 +95,6 @@
                                    (kill-buffer)
                                    (delete-window)))
 
-(global-set-key (kbd "<C-next>") 'winner-redo)
-(global-set-key (kbd "<C-prior>") 'winner-undo)
 
 ;; META
 
@@ -104,3 +103,14 @@
 
 (global-set-key (kbd "M-f") 'find-name-dired)
 (global-set-key (kbd "M-r") 'rgrep)
+
+
+(global-set-key (kbd "C-o") 'other-window)
+(global-set-key (kbd "M-o") (lambda () (interactive) (other-window 1)))
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LOCAL KEYS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)

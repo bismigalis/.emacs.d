@@ -1,3 +1,5 @@
+;;(windmove-default-keybindings 'control)
+
 (require 'todotxt)
 
 (global-auto-revert-mode 1)
@@ -100,7 +102,7 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (fset 'yes-or-no-p 'y-or-n-p)
-(windmove-default-keybindings 'control)
+
 (setq make-backup-files nil)
 (setq column-number-mode t)
 ;;;;MARKING TEXT
