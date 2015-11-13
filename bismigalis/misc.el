@@ -1,5 +1,7 @@
 ;;(windmove-default-keybindings 'control)
 
+(global-git-gutter-mode t)
+
 (require 'todotxt)
 
 (global-auto-revert-mode 1)
