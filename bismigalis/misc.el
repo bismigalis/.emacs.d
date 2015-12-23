@@ -1,13 +1,20 @@
-;;(windmove-default-keybindings 'control)
+;;(setq uniquify-buffer-name-style :forward)
+(setq mark-even-if-inactive nil)
+(setq set-mark-command-repeat-pop t)
 
+(add-hook 'after-init-hook 'session-initialize)
+(add-hook 'prog-mode-hook 'ws-butler-mode) ;;Unobtrusively whitespace deletion
+(add-hook 'text-mode-hook 'whole-line-or-region-mode)
+
+(windmove-default-keybindings 'shift)
+(windmove-default-keybindings 'ctrl)
+(require 'git-gutter-fringe)
 (global-git-gutter-mode t)
 
 (require 'todotxt)
 
 (global-auto-revert-mode 1)
 (setq auto-revert-check-vc-info t)
-
-(setq dired-listing-switches "--group-directories-first -lLh")
 
 (setq compilation-scroll-output t)
 
@@ -50,7 +57,6 @@
       (winner-mode 1))
 (add-hook 'ibuffer-mode-hook (lambda () (ibuffer-auto-mode 1)))
 ;;(electric-indent-mode -1)
-(setq dired-dwim-target t)
 (show-paren-mode 1)
 (setq shell-file-name "/bin/bash")
 (setq explicit-shell-file-name "/bin/bash")
@@ -63,7 +69,7 @@
 (setq vc-handled-backends (quote ()))
 (setq tramp-default-method "ssh")
 (setq venv-location "/home/user/.env") ;;;VIRTUALENVWRAPPER
-(desktop-save-mode 1)
+;;(desktop-save-mode 1)
 
 (require 'js2-refactor)
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
@@ -83,8 +89,8 @@
   scroll-conservatively 10000
   scroll-preserve-screen-position 1)
 
-(add-hook 'before-save-hook
-          'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook
+;;           'delete-trailing-whitespace) 
 
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
@@ -99,7 +105,8 @@
 ;;(setq make-backup-files t)
 (setq inhibit-splash-screen t
       initial-scratch-message nil
-      initial-major-mode 'org-mode)
+      ;;initial-major-mode 'org-mode
+      )
 ;;(scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -122,8 +129,6 @@
 (global-set-key (kbd "M-<up>") 'highlight-symbol-prev)
 ;; (global-set-key [(meta f3)] 'highlight-symbol-query-replace)
 
-
-(put 'dired-find-alternate-file 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 (setq browse-url-browser-function 'eww-browse-url)
 
@@ -131,8 +136,8 @@
   (browse-kill-ring-default-keybindings))
 (setq browse-kill-ring-quit-action 'save-and-restore)
 
-(add-to-list 'display-buffer-alist
-                    `(,(rx bos "*helm" (* not-newline) "*" eos)
-                         (display-buffer-in-side-window)
-                         (inhibit-same-window . t)
-                         (window-height . 0.4)))
+;; (add-to-list 'display-buffer-alist
+;;                     `(,(rx bos "*helm" (* not-newline) "*" eos)
+;;                          (display-buffer-in-side-window)
+;;                          (inhibit-same-window . t)
+;;                          (window-height . 0.4)))

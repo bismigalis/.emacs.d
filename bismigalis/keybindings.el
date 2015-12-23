@@ -14,13 +14,13 @@
 ;;(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 ;;;; BOOKMARKS
 (global-set-key (kbd "C-6") 'bm-toggle)
-(global-set-key (kbd "C-5")   'bm-next)
+(global-set-key (kbd "C-5") 'bm-next)
 (global-set-key (kbd "C-%") 'bm-previous)
 
 
 ;;;;SETTING
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-x b") 'previous-buffer)
+(global-set-key (kbd "C-x b") 'bs-show)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 ;;(global-set-key (kbd "C-x k") 'kill-buffer-and-window)
 ;;(global-set-key (kbd "C-x x") 'execute-extended-command)
@@ -41,7 +41,6 @@
 
 (global-set-key (kbd "C-<") 'beginning-of-buffer)
 (global-set-key (kbd "C->") 'end-of-buffer)
-
 (global-set-key (kbd "C-x C-d") 'dired)
 (global-set-key (kbd "C-x C-u") 'undo)
 
@@ -50,8 +49,12 @@
 (global-set-key (kbd "C-x I") (lambda() (interactive) (find-file "~/.emacs.d/bismigalis")))
 (global-set-key (kbd "C-x P") 'list-packages)
 (global-set-key (kbd "C-x T") 'todotxt)
-(global-set-key (kbd "C-o") 'other-window)
 
+(global-set-key (kbd "M-e") 'move-end-of-line)
+
+(global-set-key (kbd "C-w") 'whole-line-or-region-kill-region)
+(global-set-key (kbd "M-w") 'whole-line-or-region-kill-ring-save)
+(global-set-key (kbd "C-y") 'yank)
 
 
 
@@ -90,8 +93,7 @@
 (define-key global-map [(control shift o)] 'loccur-previous-match)
 (global-set-key [f8] 'neotree-toggle)
 
-(global-set-key (kbd "S-<f10>") 'recompile)
-
+;;(global-set-key (kbd "S-<f10>") 'recompile)
 
 
 (global-set-key (kbd "C-x C-k") '(lambda () (interactive)
@@ -108,9 +110,12 @@
 (global-set-key (kbd "M-r") 'rgrep)
 
 
-(global-set-key (kbd "C-o") 'other-window)
-(global-set-key (kbd "M-o") (lambda () (interactive) (other-window 1)))
+;;(global-set-key (kbd "M-o") (lambda () (interactive) (other-window -1)))
 
+(global-set-key (kbd "<M-SPC>") (lambda ()
+                                  (interactive)
+                                  (just-one-space -1)
+                                  (delete-backward-char 1)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
