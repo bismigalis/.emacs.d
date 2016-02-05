@@ -66,6 +66,8 @@
 ;;;; prev/next buffer
 (global-set-key [?\C-,] 'winner-undo)
 (global-set-key [?\C-.] 'winner-redo)
+(global-set-key (kbd "C-x .") 'next-buffer)
+(global-set-key (kbd "C-x ,") 'previous-buffer)
 ;; (global-set-key (kbd "<C-next>") 'winner-redo)
 ;; (global-set-key (kbd "<C-prior>") 'winner-undo)
 

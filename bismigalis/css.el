@@ -23,8 +23,8 @@
 
 
 (defun bismi/css-mode-keys ()
-  (local-set-key (kbd "C-<up>") (lambda () (interactive) (bismi/change-number-at-point t)))
-  (local-set-key (kbd "C-<down>") (lambda () (interactive) (bismi/change-number-at-point nil)))
+  (local-set-key (kbd "C-M-<up>") (lambda () (interactive) (bismi/change-number-at-point t)))
+  (local-set-key (kbd "C-M-<down>") (lambda () (interactive) (bismi/change-number-at-point nil)))
 )
 
 (add-hook 'css-mode-hook
