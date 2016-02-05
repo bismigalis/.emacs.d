@@ -1,0 +1,14 @@
+#contributor : bismigalis <bismigalis@gmail.com>
+#name : <table>...</table>
+#group : table
+# --
+<table width="600" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td width="300" class="mobile" align="left" style="">
+      $1
+    </td>
+    <td width="300" class="mobile" align="right" style="">
+
+    </td>
+</tr>
+</table>
