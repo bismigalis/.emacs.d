@@ -10,6 +10,8 @@
 (add-hook 'web-mode-hook
           (lambda ()
             (bismi/html-mode-keys)
+            (setq web-mode-markup-indent-offset 2)
+
             ))
 
 

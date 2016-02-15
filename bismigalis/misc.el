@@ -1,3 +1,4 @@
+(setq recenter-positions '(top middle bottom))
 ;;(setq uniquify-buffer-name-style :forward)
 (setq mark-even-if-inactive nil)
 (setq set-mark-command-repeat-pop t)
@@ -141,3 +142,11 @@
 ;;                          (display-buffer-in-side-window)
 ;;                          (inhibit-same-window . t)
 ;;                          (window-height . 0.4)))
+
+
+(global-set-key (kbd "C-x n n") (lambda ()
+                                  (interactive)
+                                      (narrow-to-region (region-beginning) (region-end))
+                                      (goto-char 0)
+                                      (keyboard-quit)
+                                    ))
