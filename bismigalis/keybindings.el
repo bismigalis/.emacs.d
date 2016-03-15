@@ -1,3 +1,11 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LOCAL KEYS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
+
+
+
+
 ;;;; UNSETTING
 ;;(global-unset-key (kbd "M-x"))
 ;(global-unset-key (kbd "C-w"))
@@ -105,8 +113,8 @@
 
 ;; META
 
-(global-set-key (kbd "M-X") 'helm-M-x)
-(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-X") 'smex)
 
 (global-set-key (kbd "M-f") 'find-name-dired)
 (global-set-key (kbd "M-r") 'rgrep)
@@ -122,7 +130,32 @@
 
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; LOCAL KEYS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
+
+(global-set-key (kbd "C-x <left>") 'hs-hide-block)
+(global-set-key (kbd "C-x <right>") 'hs-show-block)
+
+
+
+;;FASTNAV
+(global-set-key "\M-z" 'fastnav-zap-up-to-char-forward)
+(global-set-key "\M-Z" 'fastnav-zap-up-to-char-backward)
+(global-set-key "\M-s" 'fastnav-jump-to-char-forward)
+(global-set-key "\M-S" 'fastnav-jump-to-char-backward)
+(global-set-key "\M-r" 'fastnav-replace-char-forward)
+(global-set-key "\M-R" 'fastnav-replace-char-backward)
+(global-set-key "\M-i" 'fastnav-insert-at-char-forward)
+(global-set-key "\M-I" 'fastnav-insert-at-char-backward)
+(global-set-key "\M-j" 'fastnav-execute-at-char-forward)
+(global-set-key "\M-J" 'fastnav-execute-at-char-backward)
+(global-set-key "\M-k" 'fastnav-delete-char-forward)
+(global-set-key "\M-K" 'fastnav-delete-char-backward)
+(global-set-key "\M-m" 'fastnav-mark-to-char-forward)
+(global-set-key "\M-M" 'fastnav-mark-to-char-backward)
+(global-set-key "\M-p" 'fastnav-sprint-forward)
+(global-set-key "\M-P" 'fastnav-sprint-backward)
+
+
+(global-set-key (kbd "M-<up>") 'smart-up)
+(global-set-key (kbd "M-<down>") 'smart-down)
+(global-set-key (kbd "M-<left>") 'smart-backward)
+(global-set-key (kbd "M-<right>") 'smart-forward)

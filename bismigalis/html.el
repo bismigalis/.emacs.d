@@ -1,6 +1,11 @@
 (defun bismi/html-mode-keys ()
-  (local-set-key (kbd "C-<up>") (lambda () (interactive) (bismi/change-number-at-point t)))
-  (local-set-key (kbd "C-<down>") (lambda () (interactive) (bismi/change-number-at-point nil)))
+  (local-set-key (kbd "C-M-<up>") (lambda () (interactive) (bismi/change-number-at-point t)))
+  (local-set-key (kbd "C-M-<down>") (lambda () (interactive) (bismi/change-number-at-point nil)))
+
+  (local-set-key (kbd "C-c <right>") 'hs-show-block)
+  (local-set-key (kbd "C-c <left>")  'hs-hide-block)
+  (local-set-key (kbd "C-c <up>")    'hs-hide-all)
+  (local-set-key (kbd "C-c <down>")  'hs-show-all)
 )
 
 (add-hook 'sgml-mode-hook
