@@ -1,3 +1,5 @@
+(ido-mode t)
+(setenv "PAGER" "/bin/cat")
 (setq recenter-positions '(top middle bottom))
 ;;(setq uniquify-buffer-name-style :forward)
 (setq mark-even-if-inactive nil)

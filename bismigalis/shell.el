@@ -31,3 +31,4 @@
 
 
 (add-hook 'eshell-mode-hook 'eshell-smart-initialize)
+(add-hook 'eshell-mode-hook #'eshell-fringe-status-mode)
