@@ -99,8 +99,10 @@
 
 (require 'loccur)
 (define-key global-map [(meta o)] 'loccur-current)
-(define-key global-map [(control meta o)] 'loccur)
-(define-key global-map [(control shift o)] 'loccur-previous-match)
+;;(define-key global-map [(control meta o)] 'loccur)
+;;(define-key global-map [(control shift o)] 'loccur-previous-match)
+
+
 (global-set-key [f8] 'neotree-toggle)
 
 ;;(global-set-key (kbd "S-<f10>") 'recompile)
