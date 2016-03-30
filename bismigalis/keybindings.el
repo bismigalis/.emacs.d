@@ -136,6 +136,8 @@
 (global-set-key (kbd "C-x <left>") 'hs-hide-block)
 (global-set-key (kbd "C-x <right>") 'hs-show-block)
 
+(global-set-key (kbd "C-n") 'forward-line)
+
 
 
 ;;FASTNAV

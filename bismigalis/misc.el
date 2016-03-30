@@ -1,3 +1,5 @@
+(global-undo-tree-mode)
+
 (setq jit-lock-defer-time 0.05)
 
 (ido-mode t)
