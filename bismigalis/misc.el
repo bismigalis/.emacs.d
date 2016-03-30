@@ -1,3 +1,5 @@
+(setq jit-lock-defer-time 0.05)
+
 (ido-mode t)
 (setenv "PAGER" "/bin/cat")
 (setq recenter-positions '(top middle bottom))
