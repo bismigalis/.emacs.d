@@ -72,10 +72,10 @@
 
 
 ;;;; prev/next buffer
-(global-set-key [?\C-,] 'winner-undo)
-(global-set-key [?\C-.] 'winner-redo)
-(global-set-key (kbd "C-x ,") 'next-buffer)
-(global-set-key (kbd "C-x .") 'previous-buffer)
+;; (global-set-key [?\C-,] 'winner-undo)
+;; (global-set-key [?\C-.] 'winner-redo)
+(global-set-key (kbd "C-,") 'next-buffer)
+(global-set-key (kbd "C-.") 'previous-buffer)
 ;; (global-set-key (kbd "<C-next>") 'winner-redo)
 ;; (global-set-key (kbd "<C-prior>") 'winner-undo)
 
@@ -163,3 +163,7 @@
 (global-set-key (kbd "M-<down>") 'smart-down)
 (global-set-key (kbd "M-<left>") 'smart-backward)
 (global-set-key (kbd "M-<right>") 'smart-forward)
+
+(global-set-key "\M-." 'etags-select-find-tag)
+
+(global-set-key "\M-e" 'embrace-commander)
