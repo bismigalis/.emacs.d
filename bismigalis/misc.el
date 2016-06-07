@@ -1,4 +1,11 @@
+(load-theme 'abyss t)
 
+(setq helm-full-frame t)
+
+(setq tags-table-list
+      '("~/workspace/idea.azigo"))
+
+(setq org-return-follows-link t)
 (global-undo-tree-mode)
 
 (setq jit-lock-defer-time 0.05)
@@ -16,8 +23,8 @@
 
 (windmove-default-keybindings 'shift)
 (windmove-default-keybindings 'ctrl)
-(require 'git-gutter-fringe)
-(global-git-gutter-mode t)
+;;(require 'git-gutter-fringe)
+;;(global-git-gutter-mode t)
 
 (require 'todotxt)
 
@@ -78,13 +85,6 @@
 (setq tramp-default-method "ssh")
 (setq venv-location "/home/user/.env") ;;;VIRTUALENVWRAPPER
 ;;(desktop-save-mode 1)
-
-(require 'js2-refactor)
-(add-hook 'js2-mode-hook #'js2-refactor-mode)
-(js2r-add-keybindings-with-prefix "M-r")
-
-
-
 
 (setq browse-url-browser-function 'w3m-goto-url-new-session)
 (setq w3m-user-agent "Mozilla/5.0 (Linux; U; Android 2.3.3; zh-tw; HTC_Pyramid Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.")
@@ -156,4 +156,11 @@
                                       (narrow-to-region (region-beginning) (region-end))
                                       (goto-char 0)
                                       (keyboard-quit)
-                                    ))
+                                      ))
+
+
+;; (require 'eproject-extras)
+;; (define-project-type azigo (generic)
+;;   (look-for "pom.xml")
+;;   ;;:relevant-files ("\\.pm$" "\\.t$")
+;;   )

@@ -29,8 +29,8 @@
 ;;;;SETTING
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x b") 'bs-show)
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
-;;(global-set-key (kbd "C-x k") 'kill-buffer-and-window)
+(global-set-key (kbd "C-x k") 'kill-buffer)
+(global-set-key (kbd "C-x C-k") 'kill-buffer)
 ;;(global-set-key (kbd "C-x x") 'execute-extended-command)
 (global-set-key (kbd "C-x g") 'magit-status)
 
@@ -74,8 +74,8 @@
 ;;;; prev/next buffer
 ;; (global-set-key [?\C-,] 'winner-undo)
 ;; (global-set-key [?\C-.] 'winner-redo)
-(global-set-key (kbd "C-,") 'next-buffer)
-(global-set-key (kbd "C-.") 'previous-buffer)
+(global-set-key (kbd "C-,") 'previous-buffer)
+(global-set-key (kbd "C-.") 'next-buffer)
 ;; (global-set-key (kbd "<C-next>") 'winner-redo)
 ;; (global-set-key (kbd "<C-prior>") 'winner-undo)
 
@@ -98,8 +98,8 @@
 (global-set-key (kbd "<C-M-next>") 'forward-page)   ; Ctrl+Alt+PageDown
 
 (require 'loccur)
-(define-key global-map [(meta o)] 'loccur-current)
-;;(define-key global-map [(control meta o)] 'loccur)
+(define-key global-map [(control o)] 'loccur-current)
+(define-key global-map [(meta o)] 'loccur)
 ;;(define-key global-map [(control shift o)] 'loccur-previous-match)
 
 
@@ -108,9 +108,9 @@
 ;;(global-set-key (kbd "S-<f10>") 'recompile)
 
 
-(global-set-key (kbd "C-x C-k") '(lambda () (interactive)
-                                   (kill-buffer)
-                                   (delete-window)))
+;; (global-set-key (kbd "C-x C-k") '(lambda () (interactive)
+;;                                    (kill-buffer)
+;;                                    (delete-window)))
 
 
 ;; META
@@ -145,8 +145,6 @@
 (global-set-key "\M-Z" 'fastnav-zap-up-to-char-backward)
 (global-set-key "\M-s" 'fastnav-jump-to-char-forward)
 (global-set-key "\M-S" 'fastnav-jump-to-char-backward)
-(global-set-key "\M-r" 'fastnav-replace-char-forward)
-(global-set-key "\M-R" 'fastnav-replace-char-backward)
 (global-set-key "\M-i" 'fastnav-insert-at-char-forward)
 (global-set-key "\M-I" 'fastnav-insert-at-char-backward)
 (global-set-key "\M-j" 'fastnav-execute-at-char-forward)
@@ -167,3 +165,7 @@
 (global-set-key "\M-." 'etags-select-find-tag)
 
 (global-set-key "\M-e" 'embrace-commander)
+
+(global-set-key (kbd "C-c l") 'org-store-link)
+
+(global-set-key (kbd "C-x C-f") 'helm-find-files)

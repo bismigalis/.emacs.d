@@ -12,3 +12,12 @@
 
 (require 'flymake-json)
 (add-hook 'json-mode 'flymake-json-load)
+
+;; (require 'js2-refactor)
+;; (add-hook 'js2-mode-hook #'js2-refactor-mode)
+;; (js2r-add-keybindings-with-prefix "M-r")
+
+(custom-set-variables  
+ '(js2-basic-offset 2)  
+ '(js2-bounce-indent-p t)  
+)
