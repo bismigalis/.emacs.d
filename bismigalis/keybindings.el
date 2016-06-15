@@ -62,7 +62,7 @@
 
 (global-set-key (kbd "C-w") 'whole-line-or-region-kill-region)
 (global-set-key (kbd "M-w") 'whole-line-or-region-kill-ring-save)
-(global-set-key (kbd "C-y") 'yank)
+;;(global-set-key (kbd "C-y") 'yank)
 
 
 
@@ -168,4 +168,8 @@
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
+;;(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x C-f") 'find-file)
+
+(global-set-key [remap next-buffer] 'bismi/next-user-buffer)
+(global-set-key [remap previous-buffer] 'bismi/previous-user-buffer)

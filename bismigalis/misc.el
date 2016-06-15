@@ -1,4 +1,11 @@
-(load-theme 'abyss t)
+(delete-selection-mode)
+;;(setq x-select-enable-primary t)
+;;(setq x-select-enable-clipboard t)
+;;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+
+(setq save-interprogram-paste-before-kill t)
+
+(load-theme 'cyberpunk t)
 
 (setq helm-full-frame t)
 
@@ -13,7 +20,6 @@
 (ido-mode t)
 (setenv "PAGER" "/bin/cat")
 (setq recenter-positions '(top middle bottom))
-;;(setq uniquify-buffer-name-style :forward)
 (setq mark-even-if-inactive nil)
 (setq set-mark-command-repeat-pop t)
 
@@ -25,6 +31,8 @@
 (windmove-default-keybindings 'ctrl)
 ;;(require 'git-gutter-fringe)
 ;;(global-git-gutter-mode t)
+
+(setq uniquify-buffer-name-style 'forward)
 
 (require 'todotxt)
 

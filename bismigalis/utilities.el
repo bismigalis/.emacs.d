@@ -1,3 +1,6 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; TOGGLE WINDOW SPLIT
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun toggle-window-split ()
   (interactive)
   (if (= (count-windows) 2)
@@ -26,7 +29,7 @@
 (global-set-key (kbd "C-4") 'toggle-window-split)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
+;; SMARTER MOVE BEGINNING OF LINE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun smarter-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
@@ -53,7 +56,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; duplicate current line
+;; DUPLICATE CURRENT LINE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun duplicate-current-line (&optional n)
   "duplicate current line, make more than 1 copy given a numeric argument"
@@ -74,7 +77,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; swap quotes of the string point is in
+;; SWAP QUOTES OF THE STRING POINT IS IN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun swap-quotes ()
   "Swaps the quote symbols in a \\[python-mode] string"
@@ -104,10 +107,10 @@ point reaches the beginning or end of the buffer, stop there."
 ;; NEXT/PREVIOUS BUFFER
 ;;;;;;;;;;;;;;;;;;;;;;;
 (defvar bismi-switch-buffer-ignore-dired t
-  "If t, ignore dired buffer when calling `bismi-next-user-buffer' or `bismi-previous-user-buffer'")
+  "If t, ignore dired buffer when calling `bismi/next-user-buffer' or `bismi/previous-user-buffer'")
 (setq bismi-switch-buffer-ignore-dired t)
 
-(defun bismi-next-user-buffer ()
+(defun bismi/next-user-buffer ()
   "Switch to the next user buffer.
  “user buffer” is a buffer whose name does not start with “*”.
 If `bismi-switch-buffer-ignore-dired' is true, also skip directory buffer.
@@ -126,7 +129,7 @@ If `bismi-switch-buffer-ignore-dired' is true, also skip directory buffer.
                  (setq i (1+ i)))
         (progn (setq i 100))))))
 
-(defun bismi-previous-user-buffer ()
+(defun bismi/previous-user-buffer ()
   "Switch to the previous user buffer.
  “user buffer” is a buffer whose name does not start with “*”.
 If `bismi-switch-buffer-ignore-dired' is true, also skip directory buffer.
@@ -158,7 +161,7 @@ If `bismi-switch-buffer-ignore-dired' is true, also skip directory buffer.
 
 
 ;;;;;;;;;;;;;;;;;;;
-;; dwim-compile
+;; DWIM-COMPILE
 ;;;;;;;;;;;;;;;;;;
 (defvar get-buffer-compile-command (lambda (file) (cons file 1)))
 (make-variable-buffer-local 'get-buffer-compile-command)
@@ -211,7 +214,9 @@ If `bismi-switch-buffer-ignore-dired' is true, also skip directory buffer.
 
 
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; COPY FILENAME TO CLIPBOARD
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun copy-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
   (interactive)
@@ -223,6 +228,10 @@ If `bismi-switch-buffer-ignore-dired' is true, also skip directory buffer.
       (message "Copied buffer file name '%s' to the clipboard." filename))))
 (global-set-key (kbd "S-<f2>") 'copy-file-name-to-clipboard)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; URL ENCODE/DECODE REGION
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun url-encode-region (start end)
   "Replace a region with the same contents, only URL decoded."
   (interactive "r")

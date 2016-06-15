@@ -7,17 +7,18 @@
 (add-hook 'js2-mode-hook
           #'(lambda ()
               (flycheck-mode t)
+              (electric-indent-local-mode -1)
               (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
               (define-key js2-mode-map "@" 'js-doc-insert-tag)))
 
 (require 'flymake-json)
 (add-hook 'json-mode 'flymake-json-load)
 
-;; (require 'js2-refactor)
-;; (add-hook 'js2-mode-hook #'js2-refactor-mode)
-;; (js2r-add-keybindings-with-prefix "M-r")
+(require 'js2-refactor)
+(add-hook 'js2-mode-hook #'js2-refactor-mode)
+;;(js2r-add-keybindings-with-prefix "C-x M-r")
 
-(custom-set-variables  
- '(js2-basic-offset 2)  
- '(js2-bounce-indent-p t)  
-)
+;; (custom-set-variables
+;;  '(js2-basic-offset 2)
+;;  '(js2-bounce-indent-p t)
+;; )
