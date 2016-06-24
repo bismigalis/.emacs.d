@@ -22,3 +22,9 @@
 ;;  '(js2-basic-offset 2)
 ;;  '(js2-bounce-indent-p t)
 ;; )
+
+
+(defun json-format ()
+  (interactive)
+  (save-excursion
+    (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)))

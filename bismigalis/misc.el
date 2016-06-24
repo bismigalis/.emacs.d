@@ -5,7 +5,7 @@
 
 (setq save-interprogram-paste-before-kill t)
 
-(load-theme 'cyberpunk t)
+(load-theme 'liso t)
 
 (setq helm-full-frame t)
 
@@ -14,7 +14,7 @@
 
 (setq org-return-follows-link t)
 (global-undo-tree-mode)
-
+(global-dummyparens-mode)
 (setq jit-lock-defer-time 0.05)
 
 (ido-mode t)
@@ -32,7 +32,11 @@
 ;;(require 'git-gutter-fringe)
 ;;(global-git-gutter-mode t)
 
+(require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
+(setq uniquify-separator "/")
+(setq uniquify-after-kill-buffer-p t)    ; rename after killing uniquified
+(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
 (require 'todotxt)
 
@@ -79,8 +83,9 @@
 (when (fboundp 'winner-mode)
       (winner-mode 1))
 (add-hook 'ibuffer-mode-hook (lambda () (ibuffer-auto-mode 1)))
-;;(electric-indent-mode -1)
+
 (show-paren-mode 1)
+(setq-default show-paren-delay 0)
 (setq shell-file-name "/bin/bash")
 (setq explicit-shell-file-name "/bin/bash")
 ;;(global-page-break-lines-mode)
@@ -116,7 +121,6 @@
 
 (require 'cl)
 (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "chromium-browser")
-(toggle-uniquify-buffer-names)
 (setq stack-trace-on-error t)
 ;;(setq make-backup-files t)
 (setq inhibit-splash-screen t
