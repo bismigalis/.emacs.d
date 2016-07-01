@@ -14,7 +14,6 @@
 
 (setq org-return-follows-link t)
 (global-undo-tree-mode)
-(global-dummyparens-mode)
 (setq jit-lock-defer-time 0.05)
 
 (ido-mode t)
