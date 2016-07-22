@@ -41,3 +41,4 @@
             (bismi/css-mode-keys)
             ))
 (setq css-indent-offset 2)
+(add-hook 'css-mode-hook  'emmet-mode)

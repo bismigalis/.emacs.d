@@ -21,5 +21,4 @@
 
 
 (add-hook 'sgml-mode-hook 'emmet-mode)
-(add-hook 'css-mode-hook  'emmet-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))

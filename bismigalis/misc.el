@@ -9,8 +9,7 @@
 
 (setq helm-full-frame t)
 
-(setq tags-table-list
-      '("~/workspace/idea.azigo"))
+;;(setq tags-table-list '("~/workspace/idea.azigo"))
 
 (setq org-return-follows-link t)
 (global-undo-tree-mode)
@@ -175,3 +174,5 @@
 ;;   (look-for "pom.xml")
 ;;   ;;:relevant-files ("\\.pm$" "\\.t$")
 ;;   )
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "google-chrome")

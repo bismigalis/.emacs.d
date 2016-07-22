@@ -52,9 +52,11 @@
 (global-set-key (kbd "C-x C-d") 'dired)
 (global-set-key (kbd "C-x C-u") 'undo)
 
-(global-set-key (kbd "C-x S") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 (global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x S") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 (global-set-key (kbd "C-x I") (lambda() (interactive) (find-file "~/.emacs.d/bismigalis")))
+(global-set-key (kbd "C-x O") (lambda() (interactive) (find-file "~/org")))
+(global-set-key (kbd "C-x A") (lambda() (interactive) (find-file "~/org/a.org")))
 (global-set-key (kbd "C-x P") 'list-packages)
 (global-set-key (kbd "C-x T") 'todotxt)
 
