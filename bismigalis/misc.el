@@ -1,3 +1,4 @@
+(setq ag-highlight-search t)
 (delete-selection-mode)
 ;;(setq x-select-enable-primary t)
 ;;(setq x-select-enable-clipboard t)
@@ -63,7 +64,7 @@
 
 ;;;;YASNIPPET
 (require 'yasnippet)
-(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+(setq yas-snippet-dirs '("~/.emacs.d/bismigalis/snippets"))
 (yas-global-mode -1)
 (yas-reload-all)
 (add-hook 'prog-mode-hook 'yas-minor-mode)
@@ -176,3 +177,16 @@
 ;;   )
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
+
+;; BIG FILES
+(defun my-find-file-check-make-large-file-read-only-hook ()
+  "If a file is over a given size, make the buffer read only."
+  (when (> (buffer-size) (* 1024 1024))
+    ;;(setq buffer-read-only t)
+    (buffer-disable-undo)
+    (linum-mode -1)
+    (font-lock-mode -1)
+    ;;(fundamental-mode)
+    ))
+
+(add-hook 'find-file-hook 'my-find-file-check-make-large-file-read-only-hook)

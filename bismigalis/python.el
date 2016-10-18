@@ -3,9 +3,9 @@
 
 (require 'flycheck)
 
-(defun bismi/python-mode-keys ()
-  (define-key python-mode-map (kbd "C-o") 'occur-python)
-)
+;; (defun bismi/python-mode-keys ()
+;;   (define-key python-mode-map (kbd "C-o") 'occur-python)
+;; )
 
 (add-hook 'python-mode-hook
           (lambda ()

@@ -22,8 +22,8 @@
 ;;(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 ;;;; BOOKMARKS
 (global-set-key (kbd "C-6") 'bm-toggle)
-(global-set-key (kbd "C-5") 'bm-next)
-(global-set-key (kbd "C-%") 'bm-previous)
+(global-set-key (kbd "C-5") 'bm-show)
+(global-set-key (kbd "C-%") 'bm-show-all)
 
 
 ;;;;SETTING
@@ -52,11 +52,10 @@
 (global-set-key (kbd "C-x C-d") 'dired)
 (global-set-key (kbd "C-x C-u") 'undo)
 
-(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x S") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 (global-set-key (kbd "C-x I") (lambda() (interactive) (find-file "~/.emacs.d/bismigalis")))
 (global-set-key (kbd "C-x O") (lambda() (interactive) (find-file "~/org")))
-(global-set-key (kbd "C-x A") (lambda() (interactive) (find-file "~/org/a.org")))
+(global-set-key (kbd "C-x A") (lambda() (interactive) (find-file "~/workspace/idea.azigo/2014/com.azigo.js.portal_v2016/src/main/resources/a.org")))
 (global-set-key (kbd "C-x P") 'list-packages)
 (global-set-key (kbd "C-x T") 'todotxt)
 
@@ -74,12 +73,11 @@
 
 
 ;;;; prev/next buffer
-;; (global-set-key [?\C-,] 'winner-undo)
-;; (global-set-key [?\C-.] 'winner-redo)
 (global-set-key (kbd "C-,") 'previous-buffer)
 (global-set-key (kbd "C-.") 'next-buffer)
-;; (global-set-key (kbd "<C-next>") 'winner-redo)
-;; (global-set-key (kbd "<C-prior>") 'winner-undo)
+;; winner
+(global-set-key (kbd "C-x <left>") 'winner-undo)
+(global-set-key (kbd "C-x <right>") 'winner-redo)
 
 
 ;; (setq swbuff-exclude-buffer-regexps '("^ .*" "^\\*.*\\*"))
@@ -117,11 +115,11 @@
 
 ;; META
 
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-X") 'smex)
+(global-set-key (kbd "M-X") 'helm-M-x)
+(global-set-key (kbd "M-x") 'smex)
 
 (global-set-key (kbd "M-f") 'find-name-dired)
-(global-set-key (kbd "M-r") 'rgrep)
+(global-set-key (kbd "M-r") 'replace-string)
 
 
 ;;(global-set-key (kbd "M-o") (lambda () (interactive) (other-window -1)))
@@ -140,25 +138,6 @@
 
 (global-set-key (kbd "C-n") 'forward-line)
 
-
-
-;;FASTNAV
-(global-set-key "\M-z" 'fastnav-zap-up-to-char-forward)
-(global-set-key "\M-Z" 'fastnav-zap-up-to-char-backward)
-(global-set-key "\M-s" 'fastnav-jump-to-char-forward)
-(global-set-key "\M-S" 'fastnav-jump-to-char-backward)
-(global-set-key "\M-i" 'fastnav-insert-at-char-forward)
-(global-set-key "\M-I" 'fastnav-insert-at-char-backward)
-(global-set-key "\M-j" 'fastnav-execute-at-char-forward)
-(global-set-key "\M-J" 'fastnav-execute-at-char-backward)
-(global-set-key "\M-k" 'fastnav-delete-char-forward)
-(global-set-key "\M-K" 'fastnav-delete-char-backward)
-(global-set-key "\M-m" 'fastnav-mark-to-char-forward)
-(global-set-key "\M-M" 'fastnav-mark-to-char-backward)
-(global-set-key "\M-p" 'fastnav-sprint-forward)
-(global-set-key "\M-P" 'fastnav-sprint-backward)
-
-
 ;; (global-set-key (kbd "M-<up>") 'smart-up)
 ;; (global-set-key (kbd "M-<down>") 'smart-down)
 (global-set-key (kbd "M-<left>") 'backward-word)
@@ -175,3 +154,11 @@
 
 (global-set-key [remap next-buffer] 'bismi/next-user-buffer)
 (global-set-key [remap previous-buffer] 'bismi/previous-user-buffer)
+
+;; move line up/down
+(global-set-key (kbd "C-M-<up>") 'shift-text-up)
+(global-set-key (kbd "C-M-<down>") 'shift-text-down)
+(global-set-key (kbd "C-M-<left>") 'shift-text-left)
+(global-set-key (kbd "C-M-<right>") 'shift-text-right)
+
+(global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
