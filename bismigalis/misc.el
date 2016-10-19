@@ -1,26 +1,44 @@
-(setq ag-highlight-search t)
+(setq ag-highlight-search t
+      save-interprogram-paste-before-kill t
+      org-return-follows-link t
+      jit-lock-defer-time 0.05
+
+      recenter-positions '(top middle bottom)
+      mark-even-if-inactive nil
+      set-mark-command-repeat-pop t
+
+      helm-full-frame t
+      ;;tags-table-list '("~/workspace/idea.azigo/adminka")
+      etags-table-search-up-depth 10
+      )
+(require 'etags-table)
+;;;; temprorary files
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+(setq browse-url-browser-function 'eww-browse-url)
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "google-chrome")
+
+(setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "chromium-browser")
+(setq stack-trace-on-error t)
+;;(setq make-backup-files t)
+(setq inhibit-splash-screen t
+      initial-scratch-message nil
+      ;;initial-major-mode 'org-mode
+      )
+
 (delete-selection-mode)
 ;;(setq x-select-enable-primary t)
 ;;(setq x-select-enable-clipboard t)
 ;;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 
-(setq save-interprogram-paste-before-kill t)
 
 (load-theme 'liso t)
 
-(setq helm-full-frame t)
-
-;;(setq tags-table-list '("~/workspace/idea.azigo"))
-
-(setq org-return-follows-link t)
 (global-undo-tree-mode)
-(setq jit-lock-defer-time 0.05)
 
 (ido-mode t)
 (setenv "PAGER" "/bin/cat")
-(setq recenter-positions '(top middle bottom))
-(setq mark-even-if-inactive nil)
-(setq set-mark-command-repeat-pop t)
 
 (add-hook 'after-init-hook 'session-initialize)
 (add-hook 'prog-mode-hook 'ws-butler-mode) ;;Unobtrusively whitespace deletion
@@ -58,9 +76,6 @@
 (smex-initialize)
 
 
-;;;; temprorary files
-(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 ;;;;YASNIPPET
 (require 'yasnippet)
@@ -119,13 +134,6 @@
 
 
 (require 'cl)
-(setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "chromium-browser")
-(setq stack-trace-on-error t)
-;;(setq make-backup-files t)
-(setq inhibit-splash-screen t
-      initial-scratch-message nil
-      ;;initial-major-mode 'org-mode
-      )
 ;;(scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -149,7 +157,7 @@
 ;; (global-set-key [(meta f3)] 'highlight-symbol-query-replace)
 
 (put 'narrow-to-region 'disabled nil)
-(setq browse-url-browser-function 'eww-browse-url)
+
 
 (when (require 'browse-kill-ring nil 'noerror)
   (browse-kill-ring-default-keybindings))
@@ -175,8 +183,6 @@
 ;;   (look-for "pom.xml")
 ;;   ;;:relevant-files ("\\.pm$" "\\.t$")
 ;;   )
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "google-chrome")
 
 ;; BIG FILES
 (defun my-find-file-check-make-large-file-read-only-hook ()
