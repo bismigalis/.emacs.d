@@ -5,15 +5,30 @@
 
 
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; UNSETTING
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;(global-unset-key (kbd "M-x"))
 ;(global-unset-key (kbd "C-w"))
+(global-unset-key (kbd "<f2>"))
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-x a"))
 (global-unset-key (kbd "C-<next>"))
 (global-unset-key (kbd "C-/"))
 (global-unset-key (kbd "<insert>"))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;SETTING
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;(windmove-default-keybindings 'shift)
+;;(windmove-default-keybindings 'meta)
+;;(windmove-default-keybindings 'ctrl)
+
+;; (global-set-key (kbd "M-<up>") 'smart-up)
+;; (global-set-key (kbd "M-<down>") 'smart-down)
+(global-set-key (kbd "M-<left>") 'backward-word)
+(global-set-key (kbd "M-<right>") 'forward-word)
 
 
 
@@ -26,7 +41,6 @@
 (global-set-key (kbd "C-%") 'bm-show-all)
 
 
-;;;;SETTING
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x b") 'bs-show)
 (global-set-key (kbd "C-x k") 'kill-buffer)
@@ -61,9 +75,6 @@
 
 (global-set-key (kbd "M-e") 'move-end-of-line)
 
-(global-set-key (kbd "C-w") 'whole-line-or-region-kill-region)
-(global-set-key (kbd "M-w") 'whole-line-or-region-kill-ring-save)
-;;(global-set-key (kbd "C-y") 'yank)
 
 
 
@@ -138,11 +149,6 @@
 
 (global-set-key (kbd "C-n") 'forward-line)
 
-;; (global-set-key (kbd "M-<up>") 'smart-up)
-;; (global-set-key (kbd "M-<down>") 'smart-down)
-(global-set-key (kbd "M-<left>") 'backward-word)
-(global-set-key (kbd "M-<right>") 'forward-word)
-
 (global-set-key "\M-." 'etags-select-find-tag)
 
 (global-set-key "\M-e" 'embrace-commander)
@@ -161,4 +167,4 @@
 (global-set-key (kbd "C-M-<left>") 'shift-text-left)
 (global-set-key (kbd "C-M-<right>") 'shift-text-right)
 
-(global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
+(global-set-key (kbd "C-x C-j") (lambda () (interactive) (join-line)))

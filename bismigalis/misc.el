@@ -1,17 +1,26 @@
+;;(set-face-attribute 'default nil :height 110)
+
+
+(use-package dired-single :ensure t)
+(use-package etags-table
+  :ensure t
+  :config (setq etags-table-search-up-depth 10)
+)
+
 (setq ag-highlight-search t
       save-interprogram-paste-before-kill t
       org-return-follows-link t
       jit-lock-defer-time 0.05
 
       recenter-positions '(top middle bottom)
-      mark-even-if-inactive nil
-      set-mark-command-repeat-pop t
+      mark-even-if-inactive t
+      set-mark-command-repeat-pop nil
 
       helm-full-frame t
       ;;tags-table-list '("~/workspace/idea.azigo/adminka")
-      etags-table-search-up-depth 10
+      
       )
-(require 'etags-table)
+
 ;;;; temprorary files
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
@@ -42,20 +51,22 @@
 
 (add-hook 'after-init-hook 'session-initialize)
 (add-hook 'prog-mode-hook 'ws-butler-mode) ;;Unobtrusively whitespace deletion
-(add-hook 'text-mode-hook 'whole-line-or-region-mode)
 
-(windmove-default-keybindings 'shift)
-(windmove-default-keybindings 'ctrl)
 ;;(require 'git-gutter-fringe)
 ;;(global-git-gutter-mode t)
 
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-(setq uniquify-separator "/")
-(setq uniquify-after-kill-buffer-p t)    ; rename after killing uniquified
-(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+(use-package uniquify
+  ;;:ensure t
+  :config
+  (progn
+    (setq uniquify-buffer-name-style 'forward)
+    (setq uniquify-separator "/")
+    (setq uniquify-after-kill-buffer-p t)    ; rename after killing uniquified
+    (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+    )
+  )
 
-(require 'todotxt)
+(use-package todotxt :ensure t)
 
 (global-auto-revert-mode 1)
 (setq auto-revert-check-vc-info t)
@@ -143,7 +154,7 @@
 (setq column-number-mode t)
 ;;;;MARKING TEXT
 (delete-selection-mode t)
-(transient-mark-mode t)
+(transient-mark-mode nil)
 (setq x-select-enable-clipboard t)
 
 
@@ -196,3 +207,28 @@
     ))
 
 (add-hook 'find-file-hook 'my-find-file-check-make-large-file-read-only-hook)
+
+(use-package shift-text :ensure t)
+
+(use-package centimacro
+  :ensure t
+  :bind*
+  (("<f2>" . centi-assign))
+  )
+
+(defun markdown-html (buffer)
+  (princ (with-current-buffer buffer
+           (format "<!DOCTYPE html><html><title>Impatient Markdown</title><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://strapdownjs.com/v/0.2/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
+         (current-buffer)))
+
+(define-minor-mode bismi-minor-mode
+  "Toggle bismi-minor-mode"
+  nil nil
+  `(
+    (,(kbd "C-<up>")    . windmove-up)
+    (,(kbd "C-<down>")  . windmove-down)
+    (,(kbd "C-<left>")  . windmove-left)
+    (,(kbd "C-<right>") . windmove-right)
+    )
+  :global t)
+(bismi-minor-mode 1)

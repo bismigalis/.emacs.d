@@ -59,4 +59,3 @@ TODO:
 (defun yank-pop-back () "" (interactive "*")
        (yank-pop -1))
 
-(global-set-key "\C-\M-y" 'yank-pop-back)

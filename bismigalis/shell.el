@@ -11,6 +11,7 @@
   (define-key shell-mode-map (kbd "C-n") 'comint-next-input)
   (define-key shell-mode-map (kbd "C-c g") 'goto-python-trace-file-num)
   (define-key shell-mode-map (kbd "C-x t") 'goto-python-trace-file-num)
+  (define-key shell-mode-map (kbd "C-o") 'other-window)
 )
 
 
@@ -28,10 +29,10 @@
      (hl-line-mode 1))))
 
 (defun bismi-term-mode-keys ()
-  (define-key shell-mode-map (kbd "C-o") 'other-window)
   (yas-minor-mode -1)
   (setq term-buffer-maximum-size 1000)
   (toggle-truncate-lines 1)
+  (define-key term-raw-map (kbd "C-o") 'other-window)
   (define-key term-raw-map (kbd "C-t") 'my-term-switch-line-char)
   (define-key term-mode-map (kbd "C-t") 'my-term-switch-line-char)
   (define-key term-raw-map (kbd "M-x") 'execute-extended-command)
