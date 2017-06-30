@@ -1,5 +1,5 @@
-;;(set-face-attribute 'default nil :height 110)
-
+(set-face-attribute 'default nil :height 130)
+(load-theme 'cyberpunk t)
 
 (use-package dired-single :ensure t)
 (use-package etags-table
@@ -21,6 +21,7 @@
       
       )
 
+(setq mc/always-run-for-all t)
 ;;;; temprorary files
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
@@ -37,15 +38,11 @@
       )
 
 (delete-selection-mode)
-;;(setq x-select-enable-primary t)
-;;(setq x-select-enable-clipboard t)
-;;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
-
-
-(load-theme 'liso t)
+(setq x-select-enable-primary t)
+(setq x-select-enable-clipboard t)
+(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 
 (global-undo-tree-mode)
-
 (ido-mode t)
 (setenv "PAGER" "/bin/cat")
 
@@ -147,7 +144,8 @@
 (require 'cl)
 ;;(scroll-bar-mode -1)
 (tool-bar-mode -1)
-(menu-bar-mode -1)
+(which-key-mode)
+(menu-bar-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (setq make-backup-files nil)
@@ -229,6 +227,41 @@
     (,(kbd "C-<down>")  . windmove-down)
     (,(kbd "C-<left>")  . windmove-left)
     (,(kbd "C-<right>") . windmove-right)
+    ;; (,(kbd "C-,") . previous-buffer)
+    ;; (,(kbd "C-.") . next-buffer)
     )
   :global t)
 (bismi-minor-mode 1)
+
+(setq x-select-enable-clipboard t)
+(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+
+(add-hook 'js2-mode-hook 'skewer-mode)
+(add-hook 'css-mode-hook 'skewer-css-mode)
+(add-hook 'html-mode-hook 'skewer-html-mode)
+
+
+(defun slick-cut (beg end)
+  (interactive
+   (if mark-active
+       (list (region-beginning) (region-end))
+     (list (line-beginning-position) (line-beginning-position 2)))))
+
+(advice-add 'kill-region :before #'slick-cut)
+
+(defun slick-copy (beg end)
+  (interactive
+   (if mark-active
+       (list (region-beginning) (region-end))
+     (message "Copied line")
+     (list (line-beginning-position) (line-beginning-position 2)))))
+
+(advice-add 'kill-ring-save :before #'slick-copy)
+
+(global-set-key (kbd "C-M-=") 'default-text-scale-increase)
+(global-set-key (kbd "C-M--") 'default-text-scale-decrease)
+(global-set-key (kbd "C-(") (lambda () (interactive) (insert-parentheses 1)))
+
+;; (require 'phi-search)
+;; (global-set-key (kbd "C-s") 'phi-search)
+;; (global-set-key (kbd "C-r") 'phi-search-backward)

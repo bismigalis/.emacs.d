@@ -1,15 +1,30 @@
-;; (use-package parinfer
-;;   :ensure t
-;;   :bind
-;;   (("C-c C-," . parinfer-toggle-mode))
-;;   :init
-;;   (progn
-;;      (setq parinfer-extensions
-;;            '(defaults))       ; should be included.
-;;     ;;         pretty-parens  ; different paren styles for different modes.
-;;     ;;         evil           ; If you use Evil.
-;;     ;;         lispy          ; If you use Lispy. With this extension, you should install Lispy and do not enable lispy-mode directly.
-;;     ;;         smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
-;;     ;;         smart-yank))   ; Yank behavior depend on mode.
-;;     (add-hook 'clojure-mode-hook #'parinfer-mode)
-;;     (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)))
+;; (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
+;; (add-hook 'clojure-mode-hook (lambda () (lispy-mode 1)))
+
+(use-package paredit
+  :bind (
+         ("M-q" . paredit-reindent-defun)
+         ("("   . paredit-open-round)
+         ("C-(" . paredit-wrap-round)
+         ("M-(" . paredit-wrap-round)
+         (")"   . paredit-close-round)
+         ("["   . paredit-open-square)
+         ("M-[" . paredit-wrap-square)
+         ("]"   . paredit-close-square)
+         ("{"   . paredit-open-curly)
+         ("C-{" . paredit-wrap-curly)
+         ("M-{" . paredit-wrap-curly)
+         ("}"   . paredit-close-curly)
+         ("C-k" . paredit-kill)
+         ("M-k" . paredit-copy-as-kill)
+         ("C-M-k" . paredit-splice-sexp-killing-forward)
+         ("C-M-S-k" . paredit-splice-sexp-killing-backward)
+         ))
+
+
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(set-face-attribute 'rainbow-delimiters-unmatched-face nil
+            :foreground "red"
+            :inherit 'error
+            :box t)

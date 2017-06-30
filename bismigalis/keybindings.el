@@ -1,12 +1,15 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; LOCAL KEYS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
+;; helper macros
+;; now "C-x -" equals to "C-x 2"
+;; (defkbalias (kbd "C-x 2") (kbd "C-x -"))
+(defmacro defkbalias (old new)
+  `(define-key (current-global-map) ,new
+     (lookup-key (current-global-map) ,old)))
 
-
+;; (defkbalias (kbd "C-<") (kbd "M-<"))
+;; (defkbalias (kbd "C->") (kbd "M->"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; UNSETTING
+;;;; GLOBAL UNSETTING
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;(global-unset-key (kbd "M-x"))
 ;(global-unset-key (kbd "C-w"))
@@ -19,7 +22,7 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;SETTING
+;;;; GLOBAL KEYS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;(windmove-default-keybindings 'shift)
 ;;(windmove-default-keybindings 'meta)
@@ -41,8 +44,11 @@
 (global-set-key (kbd "C-%") 'bm-show-all)
 
 
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-x b") 'bs-show)
+;; (global-set-key (kbd "C-x C-b") 'ibuffer)
+;; (global-set-key (kbd "C-x b") 'bs-show)
+(global-set-key (kbd "C-x C-b") 'helm-projectile)
+(global-set-key (kbd "C-x b") 'helm-projectile-switch-to-buffer)
+
 (global-set-key (kbd "C-x k") 'kill-buffer)
 (global-set-key (kbd "C-x C-k") 'kill-buffer)
 ;;(global-set-key (kbd "C-x x") 'execute-extended-command)
@@ -70,7 +76,7 @@
 (global-set-key (kbd "C-x I") (lambda() (interactive) (find-file "~/.emacs.d/bismigalis")))
 (global-set-key (kbd "C-x O") (lambda() (interactive) (find-file "~/org")))
 (global-set-key (kbd "C-x A") (lambda() (interactive) (find-file "~/workspace/idea.azigo/2014/com.azigo.js.portal_v2016/src/main/resources/a.org")))
-(global-set-key (kbd "C-x P") 'list-packages)
+(global-set-key (kbd "C-x P") (lambda () (interactive) (if (get-buffer "*Packages*") (switch-to-buffer "*Packages*") (list-packages))))
 (global-set-key (kbd "C-x T") 'todotxt)
 
 (global-set-key (kbd "M-e") 'move-end-of-line)
@@ -84,8 +90,8 @@
 
 
 ;;;; prev/next buffer
-(global-set-key (kbd "C-,") 'previous-buffer)
-(global-set-key (kbd "C-.") 'next-buffer)
+;; (global-set-key (kbd "C-,") 'previous-buffer)
+;; (global-set-key (kbd "C-.") 'next-buffer)
 ;; winner
 (global-set-key (kbd "C-x <left>") 'winner-undo)
 (global-set-key (kbd "C-x <right>") 'winner-redo)
@@ -125,21 +131,15 @@
 
 
 ;; META
-
 (global-set-key (kbd "M-X") 'helm-M-x)
 (global-set-key (kbd "M-x") 'smex)
-
 (global-set-key (kbd "M-f") 'find-name-dired)
 (global-set-key (kbd "M-r") 'replace-string)
-
-
 ;;(global-set-key (kbd "M-o") (lambda () (interactive) (other-window -1)))
-
 (global-set-key (kbd "<M-SPC>") (lambda ()
                                   (interactive)
                                   (just-one-space -1)
                                   (delete-backward-char 1)))
-
 
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
@@ -148,13 +148,9 @@
 (global-set-key (kbd "C-x <right>") 'hs-show-block)
 
 (global-set-key (kbd "C-n") 'forward-line)
-
 (global-set-key "\M-." 'etags-select-find-tag)
-
 (global-set-key "\M-e" 'embrace-commander)
-
 (global-set-key (kbd "C-c l") 'org-store-link)
-
 ;;(global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x C-f") 'find-file)
 
@@ -166,5 +162,14 @@
 (global-set-key (kbd "C-M-<down>") 'shift-text-down)
 (global-set-key (kbd "C-M-<left>") 'shift-text-left)
 (global-set-key (kbd "C-M-<right>") 'shift-text-right)
-
 (global-set-key (kbd "C-x C-j") (lambda () (interactive) (join-line)))
+(global-set-key (kbd "M-i") 'helm-swoop)
+(global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+(global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
+(global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LOCAL KEYS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)

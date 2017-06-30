@@ -1,7 +1,8 @@
-(setq js-indent-width 2)
+(setq js-indent-width 3)
+(setq js2-basic-offset 3)
 
 (require 'flycheck)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.json\\'" . fundamental-mode))
 (add-to-list 'auto-mode-alist '("\\.soy\\'" . closure-template-html-mode))
 
