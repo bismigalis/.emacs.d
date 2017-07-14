@@ -1,6 +1,8 @@
 (set-face-attribute 'default nil :height 130)
 (load-theme 'cyberpunk t)
 
+(global-magit-file-mode)
+(auto-save-mode)
 (use-package dired-single :ensure t)
 (use-package etags-table
   :ensure t
@@ -107,7 +109,7 @@
 (add-hook 'ibuffer-mode-hook (lambda () (ibuffer-auto-mode 1)))
 
 (show-paren-mode 1)
-(setq-default show-paren-delay 0)
+;;(setq-default show-paren-delay 0)
 (setq shell-file-name "/bin/bash")
 (setq explicit-shell-file-name "/bin/bash")
 ;;(global-page-break-lines-mode)
@@ -265,3 +267,6 @@
 ;; (require 'phi-search)
 ;; (global-set-key (kbd "C-s") 'phi-search)
 ;; (global-set-key (kbd "C-r") 'phi-search-backward)
+
+;;; restclient
+(add-hook 'restclient-mode-hook #'hs-minor-mode)

@@ -30,9 +30,6 @@
 
 ;; (global-set-key (kbd "M-<up>") 'smart-up)
 ;; (global-set-key (kbd "M-<down>") 'smart-down)
-(global-set-key (kbd "M-<left>") 'backward-word)
-(global-set-key (kbd "M-<right>") 'forward-word)
-
 
 
 (global-set-key (kbd "C-`") ctl-x-r-map)
@@ -59,7 +56,7 @@
 ;(global-set-key (kbd "C-x C-z") 'zap-to-char)
 ;;(global-set-key (kbd "M-z") 'repeat)
 
-(global-set-key (kbd "C-<escape>") 'helm-mini)
+(global-set-key (kbd "C-<escape>") 'helm-projectile)
 
 
 (global-set-key (kbd "C-1") 'delete-other-windows)
@@ -93,8 +90,6 @@
 ;; (global-set-key (kbd "C-,") 'previous-buffer)
 ;; (global-set-key (kbd "C-.") 'next-buffer)
 ;; winner
-(global-set-key (kbd "C-x <left>") 'winner-undo)
-(global-set-key (kbd "C-x <right>") 'winner-redo)
 
 
 ;; (setq swbuff-exclude-buffer-regexps '("^ .*" "^\\*.*\\*"))
@@ -144,10 +139,18 @@
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
-(global-set-key (kbd "C-x <left>") 'hs-hide-block)
-(global-set-key (kbd "C-x <right>") 'hs-show-block)
 
-(global-set-key (kbd "C-n") 'forward-line)
+;; LEFT RIGHT
+(global-set-key (kbd "M-<left>") 'backward-word)
+(global-set-key (kbd "M-<right>") 'forward-word)
+(global-set-key (kbd "C-x <left>") 'winner-undo)
+(global-set-key (kbd "C-x <right>") 'winner-redo)
+(global-set-key (kbd "C-M-<left>") 'hs-hide-block)
+(global-set-key (kbd "C-M-<right>") 'hs-show-block)
+
+
+
+(global-set-key (kbd "M-n") 'forward-line)
 (global-set-key "\M-." 'etags-select-find-tag)
 (global-set-key "\M-e" 'embrace-commander)
 (global-set-key (kbd "C-c l") 'org-store-link)
@@ -160,14 +163,15 @@
 ;; move line up/down
 (global-set-key (kbd "C-M-<up>") 'shift-text-up)
 (global-set-key (kbd "C-M-<down>") 'shift-text-down)
-(global-set-key (kbd "C-M-<left>") 'shift-text-left)
-(global-set-key (kbd "C-M-<right>") 'shift-text-right)
 (global-set-key (kbd "C-x C-j") (lambda () (interactive) (join-line)))
 (global-set-key (kbd "M-i") 'helm-swoop)
 (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
 (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
 (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
 
+
+;; GREP
+(global-set-key (kbd "C-<f1>") 'ag-project)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LOCAL KEYS

@@ -17,11 +17,11 @@
   (define-key dired-mode-map (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
   (define-key dired-mode-map (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
 
-  (define-key dired-mode-map [return] 'dired-single-buffer)
-  (define-key dired-mode-map [mouse-1] 'dired-single-buffer-mouse)
-  (define-key dired-mode-map "^"
-        (function
-         (lambda nil (interactive) (dired-single-buffer ".."))))
+  ;; (define-key dired-mode-map [return] 'dired-single-buffer)
+  ;; (define-key dired-mode-map [mouse-1] 'dired-single-buffer-mouse)
+  ;; (define-key dired-mode-map "^"
+  ;;       (function
+  ;;        (lambda nil (interactive) (dired-single-buffer ".."))))
 
   )
 
