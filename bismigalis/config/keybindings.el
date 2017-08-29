@@ -56,7 +56,7 @@
 ;(global-set-key (kbd "C-x C-z") 'zap-to-char)
 ;;(global-set-key (kbd "M-z") 'repeat)
 
-(global-set-key (kbd "C-<escape>") 'helm-projectile)
+(global-set-key (kbd "C-<escape>") 'helm-mini)
 
 
 (global-set-key (kbd "C-1") 'delete-other-windows)
@@ -70,7 +70,7 @@
 (global-set-key (kbd "C-x C-u") 'undo)
 
 (global-set-key (kbd "C-x S") (lambda () (interactive) (switch-to-buffer "*scratch*")))
-(global-set-key (kbd "C-x I") (lambda() (interactive) (find-file "~/.emacs.d/bismigalis")))
+(global-set-key (kbd "C-x I") (lambda() (interactive) (find-file "~/.emacs.d/bismigalis/config")))
 (global-set-key (kbd "C-x O") (lambda() (interactive) (find-file "~/org")))
 (global-set-key (kbd "C-x A") (lambda() (interactive) (find-file "~/workspace/idea.azigo/2014/com.azigo.js.portal_v2016/src/main/resources/a.org")))
 (global-set-key (kbd "C-x P") (lambda () (interactive) (if (get-buffer "*Packages*") (switch-to-buffer "*Packages*") (list-packages))))

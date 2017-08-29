@@ -15,10 +15,11 @@
 
 (require 'flymake-json)
 ;;(add-hook 'json-mode 'flymake-json-load)
-(add-hook 'json-mode-hook #'(lambda ()
-                              (js-indent-level 2)
-                              (setq tab-width 2)
-                              ))
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)
+            (local-set-key (kbd "M-q") 'json-mode-beautify)))
 
 ;;(require 'js2-refactor)
 ;(add-hook 'js2-mode-hook #'js2-refactor-mode)

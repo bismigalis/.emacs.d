@@ -1,5 +1,7 @@
 (set-face-attribute 'default nil :height 130)
-(load-theme 'cyberpunk t)
+(load-theme 'abyss t)
+
+(setq vc-handled-backends '(Git))
 
 (global-magit-file-mode)
 (auto-save-mode)
@@ -58,8 +60,9 @@
   ;;:ensure t
   :config
   (progn
-    (setq uniquify-buffer-name-style 'forward)
-    (setq uniquify-separator "/")
+    (setq uniquify-buffer-name-style 'post-forward)
+    (setq uniquify-separator "|")
+    (setq uniquify-strip-common-suffix nil)
     (setq uniquify-after-kill-buffer-p t)    ; rename after killing uniquified
     (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
     )
@@ -89,10 +92,10 @@
 
 ;;;;YASNIPPET
 (require 'yasnippet)
-(setq yas-snippet-dirs '("~/.emacs.d/bismigalis/snippets"))
-(yas-global-mode -1)
+(add-to-list 'yas-snippet-dirs "~/.emacs.d/bismigalis/snippets")
+;; (yas-global-mode -1)
 (yas-reload-all)
-(add-hook 'prog-mode-hook 'yas-minor-mode)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
 
 
 (winner-mode 1)
@@ -118,7 +121,6 @@
 (global-set-key (kbd "<C-M-next>") 'forward-page)   ; Ctrl+Alt+PageDown
 
 (define-coding-system-alias 'UTF-8 'utf-8)
-(setq vc-handled-backends (quote ()))
 (setq tramp-default-method "ssh")
 (setq venv-location "/home/user/.env") ;;;VIRTUALENVWRAPPER
 ;;(desktop-save-mode 1)
@@ -232,7 +234,7 @@
     ;; (,(kbd "C-,") . previous-buffer)
     ;; (,(kbd "C-.") . next-buffer)
     )
-  :global t)
+  :global 1)
 (bismi-minor-mode 1)
 
 (setq x-select-enable-clipboard t)
@@ -270,3 +272,9 @@
 
 ;;; restclient
 (add-hook 'restclient-mode-hook #'hs-minor-mode)
+
+
+(defun my-flymd-browser-function (url)
+       (let ((browse-url-browser-function 'browse-url-firefox))
+         (browse-url url)))
+(setq flymd-browser-open-function 'my-flymd-browser-function)

@@ -1,25 +1,29 @@
-;; (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
-;; (add-hook 'clojure-mode-hook (lambda () (lispy-mode 1)))
-
 (use-package paredit
-  :bind (
-         ("M-q" . paredit-reindent-defun)
-         ("("   . paredit-open-round)
-         ("C-(" . paredit-wrap-round)
-         ("M-(" . paredit-wrap-round)
-         (")"   . paredit-close-round)
-         ("["   . paredit-open-square)
-         ("M-[" . paredit-wrap-square)
-         ("]"   . paredit-close-square)
-         ("{"   . paredit-open-curly)
-         ("C-{" . paredit-wrap-curly)
-         ("M-{" . paredit-wrap-curly)
-         ("}"   . paredit-close-curly)
-         ("C-k" . paredit-kill)
-         ("M-k" . paredit-copy-as-kill)
-         ("C-M-k" . paredit-splice-sexp-killing-forward)
-         ("C-M-S-k" . paredit-splice-sexp-killing-backward)
-         ))
+  :init
+  (define-minor-mode bismi-paredit-mode
+  "Toggle bismi-paredit-mode"
+  nil nil
+  `((,(kbd "M-q")     . paredit-reindent-defun)
+    (,(kbd "(")       . paredit-open-round)
+    (,(kbd "C-(")     . paredit-wrap-round)
+    (,(kbd "M-(")     . paredit-wrap-round)
+    (,(kbd ")")       . paredit-close-round)
+    (,(kbd "[")       . paredit-open-square)
+    (,(kbd "M-[")     . paredit-wrap-square)
+    (,(kbd "]")       . paredit-close-square)
+    (,(kbd "{")       . paredit-open-curly)
+    (,(kbd "C-{")     . paredit-wrap-curly)
+    (,(kbd "M-{")     . paredit-wrap-curly)
+    (,(kbd "}")       . paredit-close-curly)
+    (,(kbd "C-k")     . paredit-kill)
+    (,(kbd "M-k")     . paredit-copy-as-kill)
+    (,(kbd "C-M-k")   . paredit-splice-sexp-killing-forward)
+    (,(kbd "C-M-S-k") . paredit-splice-sexp-killing-backward))
+  ))
+
+(add-hook 'clojure-mode-hook 'bismi-paredit-mode)
+(add-hook 'clojurescript-mode-hook 'bismi-paredit-mode)
+(add-hook 'emacs-lisp-mode-hook 'bismi-paredit-mode)
 
 
 (require 'rainbow-delimiters)
