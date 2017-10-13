@@ -2,7 +2,7 @@
 (setq js2-basic-offset 3)
 
 (require 'flycheck)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.json\\'" . fundamental-mode))
 (add-to-list 'auto-mode-alist '("\\.soy\\'" . closure-template-html-mode))
 
@@ -12,6 +12,13 @@
               (electric-indent-local-mode -1)
               (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
               (define-key js2-mode-map "@" 'js-doc-insert-tag)))
+
+(add-hook 'js-mode-hook
+          #'(lambda ()
+              (hs-minor-mode t)
+              (flycheck-mode t)
+              (electric-indent-local-mode -1)))
+
 
 (require 'flymake-json)
 ;;(add-hook 'json-mode 'flymake-json-load)

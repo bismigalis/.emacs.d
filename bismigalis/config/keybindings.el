@@ -128,7 +128,7 @@
 ;; META
 (global-set-key (kbd "M-X") 'helm-M-x)
 (global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-f") 'find-name-dired)
+(global-set-key (kbd "C-x f") 'find-name-dired)
 (global-set-key (kbd "M-r") 'replace-string)
 ;;(global-set-key (kbd "M-o") (lambda () (interactive) (other-window -1)))
 (global-set-key (kbd "<M-SPC>") (lambda ()

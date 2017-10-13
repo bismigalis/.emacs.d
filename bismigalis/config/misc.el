@@ -278,3 +278,44 @@
        (let ((browse-url-browser-function 'browse-url-firefox))
          (browse-url url)))
 (setq flymd-browser-open-function 'my-flymd-browser-function)
+
+
+;;;
+(defun get-string-from-file (filePath)
+  "Return filePath's file content."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (buffer-string)))
+
+(defun load-envs ()
+  (-> (get-string-from-file "~/workspace/sansara/.env")
+      (split-string "\n")
+      (->> (mapcar (lambda (s) (split-string s " ")))
+           (mapcar `rest)
+           (mapcar `string-join)
+           (mapcar (lambda (s)
+                     (setenv
+                      (first (split-string s "="))
+                      (string-join (rest (split-string s "=")) "=")))))))
+
+;;(load-envs)
+
+;;;; AUTOSAVE BUFFER ON LEAVE
+(defadvice switch-to-buffer (before save-buffer-now activate)
+  (when (and buffer-file-name (buffer-modified-p))
+    (save-buffer)))
+(defadvice other-window (before other-window-now activate)
+  (when (and buffer-file-name (buffer-modified-p))
+    (save-buffer)))
+(defadvice windmove-up (before other-window-now activate)
+  (when (and buffer-file-name (buffer-modified-p))
+    (save-buffer)))
+(defadvice windmove-down (before other-window-now activate)
+  (when (and buffer-file-name (buffer-modified-p))
+    (save-buffer)))
+(defadvice windmove-left (before other-window-now activate)
+  (when (and buffer-file-name (buffer-modified-p))
+    (save-buffer)))
+(defadvice windmove-right (before other-window-now activate)
+  (when (and buffer-file-name (buffer-modified-p))
+    (save-buffer)))
