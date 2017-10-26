@@ -91,11 +91,11 @@
 
 
 ;;;;YASNIPPET
-(require 'yasnippet)
-(add-to-list 'yas-snippet-dirs "~/.emacs.d/bismigalis/snippets")
+;;(require 'yasnippet)
+;;(add-to-list 'yas-snippet-dirs "~/.emacs.d/bismigalis/snippets")
 ;; (yas-global-mode -1)
-(yas-reload-all)
-(add-hook 'prog-mode-hook #'yas-minor-mode)
+;;(yas-reload-all)
+;;(add-hook 'prog-mode-hook #'yas-minor-mode)
 
 
 (winner-mode 1)
@@ -319,3 +319,10 @@
 (defadvice windmove-right (before other-window-now activate)
   (when (and buffer-file-name (buffer-modified-p))
     (save-buffer)))
+
+;; AGGRESSIVE INDENT
+(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+(add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+(add-hook 'clojurescript-mode-hook #'aggressive-indent-mode)
+
+(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)

@@ -29,11 +29,14 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 (set-face-attribute 'rainbow-delimiters-unmatched-face nil
-            :foreground "red"
-            :inherit 'error
-            :box t)
+                    :foreground "red"
+                    :inherit 'error
+                    :box t)
 
-;; (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
-;; (add-hook 'clojure-mode-hook 'hs-minor-mode)
-;; (add-hook 'clojurescript-mode-hook 'hs-minor-mode)
-;; (add-hook 'restclient-mode-hook 'hs-minor-mode)
+;;(add-hook 'clojure-mode-hook
+;;          #'(lambda ()
+;;              (hs-minor-mode t)))
+
+(add-hook 'clojure-mode-hook #'hs-minor-mode)
+(add-hook 'clojurescript-mode-hook #'hs-minor-mode)
+(add-hook 'restclient-mode-hook #'hs-minor-mode)
