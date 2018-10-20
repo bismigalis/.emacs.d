@@ -1,0 +1,8 @@
+# name: fx
+# key: fx
+# --
+
+(reg-event-fx
+  :do-$1
+  (fn [{:keys [db]} [_]]
+  $0))

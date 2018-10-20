@@ -30,7 +30,6 @@
      (hl-line-mode 1))))
 
 (defun bismi-term-mode-keys ()
-  (yas-minor-mode -1)
   (setq term-buffer-maximum-size 1000)
   (toggle-truncate-lines 1)
   (define-key term-raw-map (kbd "C-o") 'other-window)

@@ -1,5 +1,5 @@
-(set-face-attribute 'default nil :height 130)
-(load-theme 'abyss t)
+;;(set-face-attribute 'default nil :height 130)
+(load-theme 'liso t)
 
 (setq vc-handled-backends '(Git))
 
@@ -87,16 +87,6 @@
 ;;;;SMEX
 (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
 (smex-initialize)
-
-
-
-;;;;YASNIPPET
-;;(require 'yasnippet)
-;;(add-to-list 'yas-snippet-dirs "~/.emacs.d/bismigalis/snippets")
-;; (yas-global-mode -1)
-;;(yas-reload-all)
-;;(add-hook 'prog-mode-hook #'yas-minor-mode)
-
 
 (winner-mode 1)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -286,39 +276,27 @@
   (with-temp-buffer
     (insert-file-contents filePath)
     (buffer-string)))
-
-(defun load-envs ()
-  (-> (get-string-from-file "~/workspace/sansara/.env")
-      (split-string "\n")
-      (->> (mapcar (lambda (s) (split-string s " ")))
-           (mapcar `rest)
-           (mapcar `string-join)
-           (mapcar (lambda (s)
-                     (setenv
-                      (first (split-string s "="))
-                      (string-join (rest (split-string s "=")) "=")))))))
-
 ;;(load-envs)
 
 ;;;; AUTOSAVE BUFFER ON LEAVE
-(defadvice switch-to-buffer (before save-buffer-now activate)
-  (when (and buffer-file-name (buffer-modified-p))
-    (save-buffer)))
-(defadvice other-window (before other-window-now activate)
-  (when (and buffer-file-name (buffer-modified-p))
-    (save-buffer)))
-(defadvice windmove-up (before other-window-now activate)
-  (when (and buffer-file-name (buffer-modified-p))
-    (save-buffer)))
-(defadvice windmove-down (before other-window-now activate)
-  (when (and buffer-file-name (buffer-modified-p))
-    (save-buffer)))
-(defadvice windmove-left (before other-window-now activate)
-  (when (and buffer-file-name (buffer-modified-p))
-    (save-buffer)))
-(defadvice windmove-right (before other-window-now activate)
-  (when (and buffer-file-name (buffer-modified-p))
-    (save-buffer)))
+;; (defadvice switch-to-buffer (before save-buffer-now activate)
+;;   (when (and buffer-file-name (buffer-modified-p))
+;;     (save-buffer)))
+;; (defadvice other-window (before other-window-now activate)
+;;   (when (and buffer-file-name (buffer-modified-p))
+;;     (save-buffer)))
+;; (defadvice windmove-up (before other-window-now activate)
+;;   (when (and buffer-file-name (buffer-modified-p))
+;;     (save-buffer)))
+;; (defadvice windmove-down (before other-window-now activate)
+;;   (when (and buffer-file-name (buffer-modified-p))
+;;     (save-buffer)))
+;; (defadvice windmove-left (before other-window-now activate)
+;;   (when (and buffer-file-name (buffer-modified-p))
+;;     (save-buffer)))
+;; (defadvice windmove-right (before other-window-now activate)
+;;   (when (and buffer-file-name (buffer-modified-p))
+;;     (save-buffer)))
 
 ;; AGGRESSIVE INDENT
 (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
@@ -326,3 +304,5 @@
 (add-hook 'clojurescript-mode-hook #'aggressive-indent-mode)
 
 (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+
+(setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")

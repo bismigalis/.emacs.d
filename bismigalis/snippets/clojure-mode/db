@@ -1,0 +1,8 @@
+# name: db
+# key: db
+# --
+
+(reg-event-db
+  :success-$1
+  (fn [db [_ $2]]
+  (assoc db :$0 $2)))
